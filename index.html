@@ -1,0 +1,4229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="no-referrer" />
+    <title>Iver Labs</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --lightBlue: #e6f8f9;
+        --darkBlue: #afd9e0;
+        --bg: #ffffff;
+        --text: #004556;
+        --ink: #1b2a2f;
+        --teal: #3d6f74;
+        --accent: #0e6d78;
+        --line: #cfeaf0;
+        --border: #98c3cc;
+        --muted: #5a7380;
+        --green: #00b67a;
+        --star: #f59e0b;
+        --black: #000000;
+        --imgBg: #a9dbe3;
+        --pressText: #2b454e;
+        --glass: rgba(255, 255, 255, 0.6);
+        --shadow: rgba(0, 69, 86, 0.06);
+        --pad: 2.5%;
+        --pad-y: 3%;
+        --gap: 1.4vw;
+        --gap-s: 0.8vw;
+        --gap-l: 3vw;
+        --fs-xs: 1.05vw;
+        --fs-s: 1.2vw;
+        --fs-m: 1.3vw;
+        --fs-l: 1.5vw;
+        --fs-ll: 1.75vw;
+        --fs-h: 2.9vw;
+        --fs-xl: 3.6vw;
+        --btn-h: 3.9vw;
+        --btn-px: 2.4vw;
+        --radius: 24px;
+        --radius-l: 28px;
+        --radius-s: 1.1vw;
+        --pill: 999px;
+        --ls: 0.05em;
+        --danger: #d93025;
+        --surface: #f5f8f9;
+        --overlay: rgba(0, 0, 0, 0.4);
+        --shadow-nav: 0 4px 12px rgba(0, 0, 0, 0.08);
+        --shadow-drawer: -4px 0 20px rgba(0, 0, 0, 0.1);
+        --shadow-card: 0 8px 30px rgba(0, 69, 86, 0.06);
+        --ease: 0.3s ease;
+        --z-nav: 1000;
+        --z-overlay: 2000;
+        --z-drawer: 2001;
+        --drawer-w: 380px;
+        --menu-w: 320px;
+        --nav-offset: 80px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        border: none;
+        background: none;
+        font-family: inherit;
+        cursor: pointer;
+      }
+
+      html {
+        scrollbar-gutter: stable;
+        scroll-padding-top: var(--nav-offset);
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        html {
+          scroll-behavior: smooth;
+        }
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+
+      body.noScroll {
+        overflow: hidden;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        overflow-x: hidden;
+      }
+
+      .coverPictureSection .cover,
+      .bestSellersSection .bestSeller .allProduct .product,
+      .bestSellersSection
+        .bestSeller
+        .allProduct
+        .product
+        .productDetailsContainer,
+      .inBetterWeTrustSection .parent .rightChild,
+      .nutritionistFormulatedAndApprovedSection .doctors .doctor .docParah,
+      .voucherSection .voucherCards .reviewCard,
+      .FooterSection footer .footerGrid .footerCol,
+      .FooterSection footer .footerGrid .footerCol .footerLinksList {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .navbarSection .nav .navLeft ul,
+      .navbarSection .nav .navRight,
+      .coverPictureSection .cover .rating,
+      .coverPictureSection .cover .perks,
+      .coverPictureSection .cover .perks .perkItemWrapper,
+      .inBetterWeTrustSection
+        .parent
+        .leftChild
+        .featuresCardContainer
+        .featureRowItem,
+      .nutritionistFormulatedAndApprovedSection .doctorsHeader,
+      .voucherSection .voucherCards .reviewCard .reviewTop,
+      .lovedSection .followUs,
+      .lovedSection .followUs .socialIconsContainer {
+        display: flex;
+        align-items: center;
+      }
+
+      .coverPictureSection .cover h2,
+      .bestSellersSection .bestSeller .bestSellerLeft h2,
+      .inBetterWeTrustSection .parent .rightChild h2,
+      .nutritionistFormulatedAndApprovedSection .doctorsHeader .doctorsHeading,
+      .voucherSection .voucherHeading,
+      .QuestionSection .faqWrapper .faqLeft .faqHeading,
+      .lovedSection .lovedHeading,
+      .ConsistencySection .consistencyHeading {
+        line-height: 1.1;
+      }
+
+      .coverPictureSection .cover h2,
+      .coverPictureSection .cover .rating .ratingText,
+      .coverPictureSection .cover .perks .perkItemWrapper .perkText,
+      .coverPictureSection .cover .badge,
+      .bestSellersSection .bestSeller .bestSellerLeft h2,
+      .bestSellersSection
+        .bestSeller
+        .allProduct
+        .product
+        .productDetailsContainer
+        .productTitleHeading,
+      .bestSellersSection
+        .bestSeller
+        .allProduct
+        .product
+        .productDetailsContainer
+        .productActionRow
+        .addToCartBtn,
+      .inBetterWeTrustSection .parent .rightChild h2,
+      .inBetterWeTrustSection
+        .parent
+        .leftChild
+        .featuresCardContainer
+        .featureRowItem
+        .featureItemText,
+      .inBetterWeTrustSection
+        .parent
+        .leftChild
+        .featuresCardContainer
+        .featureRowItem
+        .featureItemIcon,
+      .nutritionistFormulatedAndApprovedSection .doctorsHeader .doctorsHeading,
+      .nutritionistFormulatedAndApprovedSection
+        .doctorsHeader
+        .doctorsArrows
+        .doctorsArrow,
+      .nutritionistFormulatedAndApprovedSection .doctors .doctor .docParah p,
+      .nutritionistFormulatedAndApprovedSection
+        .doctors
+        .doctor
+        .docParah
+        .docName,
+      .voucherSection .voucherHeading,
+      .voucherSection .voucherCards .reviewCard .reviewTop .viewProductLink,
+      .voucherSection .voucherCards .reviewCard .reviewText,
+      .voucherSection .voucherCards .reviewCard .reviewName,
+      .QuestionSection .faqWrapper .faqLeft .faqHeading,
+      .QuestionSection .faqWrapper .faqLeft .faqSubText .faqContactLink,
+      .QuestionSection .faqWrapper .faqLeft .faqList .faqItem summary,
+      .lovedSection .lovedHeading,
+      .lovedSection .followUs .followText,
+      .lovedSection .followUs .socialIconsContainer .socialIconLink,
+      .ConsistencySection .consistencyHeading,
+      .ConsistencySection .parentContainer .card .cardTitleHeading,
+      .FooterSection footer .footerGrid .footerCol .footerColumnTitle,
+      .FooterSection footer .footerSocial a {
+        color: var(--ink);
+      }
+
+      .coverPictureSection .cover p,
+      .bestSellersSection .bestSeller .bestSellerLeft > span,
+      .bestSellersSection
+        .bestSeller
+        .allProduct
+        .product
+        .productDetailsContainer
+        .productDescriptionText,
+      .bestSellersSection
+        .bestSeller
+        .allProduct
+        .product
+        .productDetailsContainer
+        .productActionRow
+        .productPriceText,
+      .inBetterWeTrustSection .parent .rightChild p,
+      .QuestionSection .faqWrapper .faqLeft .faqSubText,
+      .QuestionSection .faqWrapper .faqLeft .faqList .faqItem p,
+      .ConsistencySection .consistencySub,
+      .ConsistencySection .parentContainer .card .cardDescriptionText {
+        color: var(--teal);
+        font-weight: 300;
+        letter-spacing: var(--ls);
+      }
+
+      .coverPictureSection .cover button,
+      .bestSellersSection .bestSeller .bestSellerLeft .shop,
+      .ConsistencySection button {
+        height: var(--btn-h);
+        padding: 0 var(--btn-px);
+        border-radius: var(--pill);
+        background: var(--ink);
+        color: var(--bg);
+        font-size: var(--fs-s);
+        font-weight: 600;
+        letter-spacing: 0.04em;
+      }
+
+      .coverPictureSection .cover,
+      .bestSellersSection .bestSeller .allProduct .product .productImg1,
+      .bestSellersSection .bestSeller .allProduct .product .productImg2,
+      .bestSellersSection .bestSeller .allProduct .product .productImg3,
+      .bestSellersSection .bestSeller .allProduct .product .productImg4,
+      .bestSellersSection .bestSeller .allProduct .product .productImg5,
+      .bestSellersSection .bestSeller .allProduct .product .productImg6,
+      .inBetterWeTrustSection,
+      .nutritionistFormulatedAndApprovedSection .doctors .doctor .docImg,
+      .voucherSection .voucherCards .reviewPhoto,
+      .QuestionSection .faqWrapper .faqImage,
+      .ConsistencySection .parentContainer .card .cardVisualWrapper {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .nutritionistFormulatedAndApprovedSection .doctors,
+      .lovedSection .vidDiv {
+        display: flex;
+        gap: var(--gap);
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .nutritionistFormulatedAndApprovedSection .doctors::-webkit-scrollbar,
+      .lovedSection .vidDiv::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nutritionistFormulatedAndApprovedSection .doctors .doctor,
+      .lovedSection .vidDiv .vid {
+        scroll-snap-align: start;
+      }
+
+      .nutritionistFormulatedAndApprovedSection,
+      .voucherSection,
+      .QuestionSection,
+      .lovedSection,
+      .ConsistencySection {
+        width: 100%;
+        padding: var(--pad-y) var(--pad);
+      }
+
+      .voucherSection .voucherCards .reviewCard,
+      .voucherSection .voucherCards .reviewPhoto,
+      .lovedSection .vidDiv .vid {
+        border-radius: var(--radius);
+      }
+
+      .inBetterWeTrustSection
+        .parent
+        .leftChild
+        .featuresCardContainer
+        .featureRowItem,
+      .bestSellersSection
+        .bestSeller
+        .allProduct
+        .product
+        .productDetailsContainer
+        .productActionRow,
+      .QuestionSection .faqWrapper .faqLeft .faqList .faqItem {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .topAnnouncementSection .topAnnouncement {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: var(--gap-s) 3%;
+        padding: 0.7% var(--pad);
+        background: var(--lightBlue);
+        font-size: 13px;
+      }
+
+      .topAnnouncementSection .topAnnouncement .topItems {
+        color: var(--text);
+        white-space: nowrap;
+      }
+      .navSection {
+        width: 100%;
+      }
+
+      .navbarSection {
+        position: relative;
+        top: 0;
+        z-index: var(--z-nav);
+        width: 100%;
+        background: var(--bg);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .navbarSection .nav {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        padding: 0 4%;
+      }
+
+      .navbarSection.sticky-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        box-shadow: var(--shadow-nav);
+        animation: slideDown 0.3s ease forwards;
+      }
+
+      @keyframes slideDown {
+        0% {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .navbarSection .nav .navLeft ul {
+        flex-wrap: wrap;
+        gap: 8%;
+      }
+
+      .navbarSection .nav .navLeft ul li {
+        font-size: 15px;
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+        cursor: pointer;
+      }
+
+      .navbarSection .nav .navLogo {
+        display: flex;
+        justify-content: center;
+      }
+
+      .navbarSection .nav .navLogo img {
+        border: none;
+        width: 240px;
+        height: auto;
+      }
+
+      .navbarSection .nav .navLogo a {
+        border: none;
+      }
+
+      .navbarSection .nav .navRight {
+        justify-content: flex-end;
+        gap: 5%;
+      }
+
+      .navbarSection .nav .navRight .actionIconBtn {
+        position: relative;
+        font-size: 22px;
+        color: var(--text);
+      }
+
+      .navbarSection .nav .navRight .subscriptionsNavLink {
+        color: var(--text);
+        font-size: 17px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .navbarSection .nav .navRight .menuToggle {
+        display: none;
+      }
+
+      .navbarSection .nav .navRight .actionIconBtn .cartCount {
+        position: absolute;
+        top: -6px;
+        right: -8px;
+        min-width: 18px;
+        height: 18px;
+        padding: 0 5px;
+        display: grid;
+        place-items: center;
+        border-radius: var(--pill);
+        background: var(--ink);
+        color: var(--bg);
+        font-size: 11px;
+        font-weight: 600;
+        line-height: 1;
+      }
+
+      .coverPictureSection .cover {
+        position: relative;
+        width: 96%;
+        margin: 3% auto 0;
+        aspect-ratio: 2.6 / 1;
+        align-items: flex-start;
+        justify-content: center;
+        gap: var(--gap);
+        padding: 0 6%;
+        border-radius: 40px 0 40px 0;
+        background-image: url(https://www.ivergut.com/cdn/shop/files/80831132-54df-421b-bca6-0c2eee6b889b.png?v=1790194121&width=2400);
+        background-position: right center;
+        overflow: hidden;
+      }
+
+      .coverPictureSection .cover > * {
+        max-width: 46%;
+      }
+
+      .coverPictureSection .cover .rating {
+        gap: 3%;
+        white-space: nowrap;
+      }
+
+      .coverPictureSection .cover .rating .stars {
+        display: flex;
+        gap: 3px;
+      }
+
+      .coverPictureSection .cover .rating .stars b {
+        width: 1.3vw;
+        height: 1.3vw;
+        min-width: 18px;
+        min-height: 18px;
+        display: grid;
+        place-items: center;
+        background: var(--green);
+        color: var(--bg);
+        font-size: var(--fs-xs);
+      }
+
+      .coverPictureSection .cover .rating .ratingText {
+        font-size: var(--fs-s);
+        font-weight: 500;
+        letter-spacing: var(--ls);
+      }
+
+      .coverPictureSection .cover h2 {
+        font-size: var(--fs-xl);
+        font-weight: 400;
+        white-space: nowrap;
+      }
+
+      .coverPictureSection .cover p {
+        max-width: 40%;
+        font-size: var(--fs-l);
+        line-height: 1.45;
+      }
+
+      .coverPictureSection .cover .perks {
+        gap: var(--gap);
+        max-width: 100%;
+      }
+
+      .coverPictureSection .cover .perks .perkItemWrapper {
+        gap: 0.6vw;
+      }
+
+      .coverPictureSection .cover .perks .perkItemWrapper .perkIcon {
+        color: var(--accent);
+        font-size: var(--fs-xs);
+      }
+
+      .coverPictureSection .cover .perks .perkItemWrapper .perkText {
+        font-size: var(--fs-xs);
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+      }
+
+      .coverPictureSection .cover .badge {
+        position: absolute;
+        top: 8%;
+        right: 3.5%;
+        width: 8.5vw;
+        aspect-ratio: 1 / 1;
+        display: grid;
+        place-items: center;
+        max-width: none;
+        border: 2px solid var(--accent);
+        border-radius: 50%;
+        text-align: center;
+        font-size: var(--fs-xs);
+        font-weight: 600;
+        line-height: 1.4;
+        letter-spacing: 0.03em;
+      }
+
+      .animatedLogosSection {
+        overflow: hidden;
+        width: 100%;
+        background-color: var(--bg);
+        padding: 40px 0 20px 0;
+      }
+
+      .animatedLogosSection .logoLineContainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: nowrap;
+        gap: 40px;
+        width: 100%;
+        animation: moveLeftAnimation 15s linear infinite;
+      }
+
+      @keyframes moveLeftAnimation {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      .animatedLogosSection .logoLineContainer .logoLine {
+        display: flex;
+        align-items: center;
+        color: var(--pressText);
+        opacity: 0.85;
+        transition: opacity 0.2s ease;
+        flex-shrink: 0;
+      }
+
+      .animatedLogosSection .logoLineContainer .logoLine:hover {
+        opacity: 1;
+      }
+
+      .animatedImg {
+        height: 30px;
+        width: auto;
+      }
+
+      .bestSeller {
+        display: flex;
+        align-items: flex-start;
+        width: 100%;
+        padding: 3vw 0 3vw 1.9vw;
+        gap: 3.5vw;
+      }
+
+      .bestSellerLeft {
+        flex: 0 0 25vw;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5vw;
+      }
+
+      .bestSellerLeft h2 {
+        margin: 0;
+        font-size: 3.4vw;
+        font-weight: 400;
+        line-height: 1.1;
+        color: var(--ink);
+      }
+
+      .bestSellerLeft h2 em {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-weight: 400;
+      }
+
+      .bestSellerLeft > span {
+        font-size: 1.45vw;
+        font-weight: 300;
+        line-height: 1.45;
+        letter-spacing: 0.05em;
+        color: var(--teal);
+      }
+
+      .allProduct {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        gap: 1.25vw;
+        overflow-x: auto;
+        scrollbar-width: none;
+        margin-top: 3vw;
+      }
+
+      .allProduct::-webkit-scrollbar {
+        display: none;
+      }
+
+      .product {
+        flex: 0 0 21.9vw;
+        display: flex;
+        flex-direction: column;
+        background: var(--bg);
+      }
+
+      .productImg1,
+      .productImg2,
+      .productImg3,
+      .productImg4,
+      .productImg5,
+      .productImg6 {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        background-color: var(--imgBg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .productDetailsContainer {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding-top: 1.2vw;
+      }
+
+      .productTitleHeading {
+        margin: 0 0 0.6vw 0;
+        font-size: 1.6vw;
+        font-weight: 500;
+        line-height: 1.35;
+        letter-spacing: 0.04em;
+        color: var(--ink);
+      }
+
+      .productDescriptionText {
+        margin: 0 0 1vw 0;
+        font-size: 1vw;
+        font-weight: 300;
+        line-height: 1.5;
+        letter-spacing: 0.04em;
+        color: var(--teal);
+        flex: 1;
+      }
+
+      .productActionRow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 0.8vw;
+        border-top: 1px solid var(--line);
+      }
+
+      .addToCartBtn {
+        height: 3vw;
+        padding: 0 1.4vw;
+        border: none;
+        border-radius: var(--pill);
+        background: var(--lightBlue);
+        color: var(--ink);
+        font-family: inherit;
+        font-size: 1vw;
+        font-weight: 400;
+        letter-spacing: 0.06em;
+        cursor: pointer;
+      }
+
+      .productPriceText {
+        font-size: 1.2vw;
+        font-weight: 300;
+        letter-spacing: 0.06em;
+        color: var(--teal);
+        white-space: nowrap;
+      }
+
+      .voucherSection {
+        width: 100%;
+        padding: 2vw 2.5vw 3vw;
+      }
+
+      .voucherHeading {
+        margin: 0 0 2.2vw;
+        font-size: 2.9vw;
+        font-weight: 600;
+        line-height: 1.1;
+        color: var(--ink);
+      }
+
+      .voucherCards {
+        display: flex;
+        gap: 1.4vw;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+      }
+
+      .voucherCards::-webkit-scrollbar {
+        display: none;
+      }
+
+      .reviewCard,
+      .reviewPhoto {
+        flex: 0 0 17.8vw;
+        height: 36.3vw;
+        border-radius: 24px;
+        scroll-snap-align: start;
+      }
+
+      .reviewCard {
+        display: flex;
+        flex-direction: column;
+        padding: 2.2vw 1.9vw;
+        background: var(--darkBlue);
+      }
+
+      .reviewTop {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .reviewStars {
+        font-size: 1.1vw;
+        letter-spacing: 0.15em;
+        color: var(--star);
+      }
+
+      .viewProductLink {
+        font-size: 0.95vw;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1.5px solid var(--ink);
+      }
+
+      .reviewText {
+        flex: 1;
+        margin: 2.8vw 0 0;
+        font-size: 1.2vw;
+        font-weight: 400;
+        line-height: 1.6;
+        letter-spacing: 0.06em;
+        color: var(--ink);
+      }
+
+      .reviewName {
+        margin: 0;
+        font-size: 1.2vw;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        color: var(--ink);
+      }
+
+      .reviewPhoto {
+        background-color: var(--line);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .reviewPhoto1 {
+        background-image: url("https://www.ivergut.com/cdn/shop/files/Review_image_1.png?v=1789754374&width=1000");
+      }
+      .reviewPhoto2 {
+        background-image: url("https://www.ivergut.com/cdn/shop/files/Review_image_2.png?v=1789754372&width=1000");
+      }
+      .reviewPhoto3 {
+        background-image: url("https://www.ivergut.com/cdn/shop/files/review_image_5.png?v=1789754373&width=1000");
+      }
+      .reviewPhoto4 {
+        background-image: url("https://www.ivergut.com/cdn/shop/files/Review_image_3.png?v=1789754374&width=1000");
+      }
+      .reviewPhoto5 {
+        background-image: url("https://www.ivergut.com/cdn/shop/files/Review_image_3.png?v=1789754374&width=1000");
+      }
+      .reviewPhoto6 {
+        background-image: url("https://www.ivergut.com/cdn/shop/files/Review_image_4.png?v=1789754374&width=1000");
+      }
+
+      .inBetterWeTrustSection {
+        position: relative;
+        display: flex;
+        min-height: 44vw;
+        background-image: url("https://www.ivergut.com/cdn/shop/files/In_Better_We_Trust.png?v=1789742634&width=1800");
+        overflow: hidden;
+      }
+
+      .inBetterWeTrustSection::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          rgba(230, 248, 249, 0.82),
+          rgba(230, 248, 249, 0.55)
+        );
+      }
+
+      .inBetterWeTrustSection .parent {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        gap: 4%;
+        padding: 7% 2.4% 4% 3.2%;
+      }
+
+      .inBetterWeTrustSection .parent .rightChild {
+        flex: 0 0 38%;
+        justify-content: space-between;
+      }
+
+      .inBetterWeTrustSection .parent .rightChild h2 {
+        font-size: var(--fs-xl);
+        font-weight: 600;
+      }
+
+      .inBetterWeTrustSection .parent .rightChild p {
+        font-size: var(--fs-m);
+        font-weight: 400;
+        line-height: 1.75;
+        letter-spacing: 0.06em;
+      }
+
+      .inBetterWeTrustSection .parent .leftChild {
+        flex: 0 0 33%;
+        align-self: flex-start;
+        margin-top: -3.2%;
+      }
+
+      .inBetterWeTrustSection .parent .leftChild .featuresCardContainer {
+        padding: 0 8%;
+        border-radius: var(--radius-l);
+        background: var(--glass);
+        backdrop-filter: blur(18px);
+        box-shadow: 0 10px 40px var(--shadow);
+      }
+
+      .inBetterWeTrustSection
+        .parent
+        .leftChild
+        .featuresCardContainer
+        .featureRowItem {
+        justify-content: space-between;
+        height: 5.6vw;
+      }
+
+      .inBetterWeTrustSection
+        .parent
+        .leftChild
+        .featuresCardContainer
+        .featureRowItem:last-child {
+        border-bottom: none;
+      }
+
+      .inBetterWeTrustSection
+        .parent
+        .leftChild
+        .featuresCardContainer
+        .featureRowItem
+        .featureItemText {
+        font-size: var(--fs-m);
+        letter-spacing: 0.06em;
+      }
+
+      .inBetterWeTrustSection
+        .parent
+        .leftChild
+        .featuresCardContainer
+        .featureRowItem
+        .featureItemIcon {
+        font-size: var(--fs-l);
+      }
+
+      .nutritionistFormulatedAndApprovedSection .doctorsHeader {
+        justify-content: space-between;
+        margin-bottom: var(--gap);
+      }
+
+      .nutritionistFormulatedAndApprovedSection .doctorsHeader .doctorsHeading,
+      .lovedSection .lovedHeading {
+        font-size: var(--fs-h);
+        font-weight: 600;
+      }
+
+      .nutritionistFormulatedAndApprovedSection .doctorsHeader .doctorsArrows {
+        display: flex;
+        border: 1.5px solid var(--line);
+        border-radius: var(--pill);
+        overflow: hidden;
+      }
+
+      .nutritionistFormulatedAndApprovedSection
+        .doctorsHeader
+        .doctorsArrows
+        .doctorsArrow {
+        width: 3.3vw;
+        height: 3.1vw;
+        font-size: var(--fs-xs);
+      }
+
+      .nutritionistFormulatedAndApprovedSection
+        .doctorsHeader
+        .doctorsArrows
+        .doctorsArrow
+        + .doctorsArrow {
+        border-left: 1.5px solid var(--line);
+      }
+
+      .nutritionistFormulatedAndApprovedSection
+        .doctorsHeader
+        .doctorsArrows
+        .doctorsArrow:hover {
+        background: var(--lightBlue);
+      }
+
+      .nutritionistFormulatedAndApprovedSection .doctors {
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+      }
+
+      .nutritionistFormulatedAndApprovedSection .doctors .doctor {
+        flex: 0 0 31.25vw;
+        aspect-ratio: 1.166 / 1;
+        display: flex;
+        border-radius: var(--radius-l);
+        background: var(--lightBlue);
+        overflow: hidden;
+      }
+
+      .nutritionistFormulatedAndApprovedSection .doctors .doctor .docParah {
+        flex: 0 0 52%;
+        padding: 6% 5% 6% 6%;
+      }
+
+      .nutritionistFormulatedAndApprovedSection .doctors .doctor .docParah p {
+        flex: 1;
+        font-size: var(--fs-xs);
+        line-height: 1.6;
+        letter-spacing: 0.06em;
+      }
+
+      .nutritionistFormulatedAndApprovedSection
+        .doctors
+        .doctor
+        .docParah
+        .docName {
+        margin: 3% 0 2%;
+        font-size: var(--fs-m);
+        font-weight: 600;
+        letter-spacing: 0.03em;
+      }
+
+      .nutritionistFormulatedAndApprovedSection
+        .doctors
+        .doctor
+        .docParah
+        .docRole {
+        color: var(--accent);
+        font-size: var(--fs-xs);
+        font-weight: 600;
+        letter-spacing: var(--ls);
+      }
+
+      .nutritionistFormulatedAndApprovedSection .doctors .doctor .docImg {
+        flex: 1;
+        background-position: center top;
+      }
+
+      .nutritionistFormulatedAndApprovedSection .doctors .doctor .docImg1 {
+        background-image: url(https://www.ivergut.com/cdn/shop/files/dbcdc043-82d4-4aef-b160-a004b1ede853.png?v=1789787332&width=800);
+      }
+      .nutritionistFormulatedAndApprovedSection .doctors .doctor .docImg2 {
+        background-image: url(https://www.ivergut.com/cdn/shop/files/3975936_6bbb8863-1507-4505-b354-e589df17bde6.webp?v=1779439691&width=800);
+      }
+      .nutritionistFormulatedAndApprovedSection .doctors .doctor .docImg3 {
+        background-image: url(https://www.ivergut.com/cdn/shop/files/09291d2f-9070-44e0-b384-26d5d51ca894.png?v=1789786869&width=800);
+      }
+
+      .QuestionSection {
+        margin-top: 5%;
+      }
+
+      .QuestionSection .faqWrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 6%;
+      }
+
+      .QuestionSection .faqWrapper .faqLeft {
+        flex: 0 0 40%;
+      }
+
+      .QuestionSection .faqWrapper .faqLeft .faqHeading {
+        font-size: var(--fs-xl);
+        font-weight: 400;
+        letter-spacing: 0.02em;
+      }
+
+      .QuestionSection .faqWrapper .faqLeft .faqSubText {
+        margin-top: 7%;
+        font-size: var(--fs-l);
+        line-height: 1.45;
+      }
+
+      .QuestionSection .faqWrapper .faqLeft .faqSubText .faqContactLink {
+        border-bottom: 1.5px solid var(--ink);
+      }
+
+      .QuestionSection .faqWrapper .faqLeft .faqList {
+        margin-top: 9%;
+      }
+
+      .QuestionSection .faqWrapper .faqLeft .faqList .faqItem:last-child {
+        border-bottom: none;
+      }
+
+      .QuestionSection .faqWrapper .faqLeft .faqList .faqItem summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 5%;
+        padding: 2% 0;
+        list-style: none;
+        font-size: var(--fs-l);
+        letter-spacing: 0.06em;
+        cursor: pointer;
+      }
+
+      .QuestionSection
+        .faqWrapper
+        .faqLeft
+        .faqList
+        .faqItem
+        summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .QuestionSection .faqWrapper .faqLeft .faqList .faqItem summary::after {
+        content: "+";
+        color: var(--accent);
+        font-size: var(--fs-h);
+        font-weight: 300;
+      }
+
+      .QuestionSection
+        .faqWrapper
+        .faqLeft
+        .faqList
+        .faqItem[open]
+        summary::after {
+        content: "−";
+      }
+
+      .QuestionSection .faqWrapper .faqLeft .faqList .faqItem p {
+        padding: 0 8% 4% 0;
+        font-size: var(--fs-s);
+        line-height: 1.7;
+      }
+
+      .QuestionSection .faqWrapper .faqImage {
+        flex: 0 0 48%;
+        aspect-ratio: 1.14 / 1;
+        border-radius: 6vw 1vw 6vw 0.8vw;
+        background-image: url(https://www.ivergut.com/cdn/shop/files/Image_13.png?v=1790189235&width=1200);
+      }
+
+      .lovedSection {
+        margin-top: 5%;
+      }
+
+      .lovedSection .lovedHeading {
+        font-weight: 800;
+      }
+
+      .lovedSection .lovedHeading em {
+        font-family: "Instrument Serif", serif;
+        font-weight: 400;
+        font-size: 1.1em;
+      }
+
+      .lovedSection .vidDiv .vid {
+        flex: 1;
+        min-width: 0;
+        aspect-ratio: 9 / 16;
+        background: var(--black);
+        overflow: hidden;
+      }
+
+      .lovedSection .vidDiv .vid video {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+
+      .lovedSection .followUs {
+        justify-content: flex-end;
+        gap: var(--gap);
+        padding-top: var(--gap);
+      }
+
+      .lovedSection .followUs .followText {
+        font-size: var(--fs-s);
+        letter-spacing: 0.06em;
+      }
+
+      .lovedSection .followUs .socialIconsContainer {
+        gap: var(--gap);
+      }
+
+      .lovedSection
+        .followUs
+        .socialIconsContainer
+        .socialIconLink
+        .socialIcon {
+        font-size: var(--fs-ll);
+      }
+
+      .ConsistencySection {
+        padding-top: 1%;
+      }
+
+      .ConsistencySection .consistencyHeading {
+        font-size: var(--fs-xl);
+        font-weight: 400;
+      }
+
+      .ConsistencySection .consistencyHeading em {
+        font-weight: 300;
+      }
+
+      .ConsistencySection .consistencySub {
+        margin: 1.2% 0 3.4%;
+        font-size: var(--fs-l);
+        font-weight: 400;
+      }
+
+      .ConsistencySection .parentContainer {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 2%;
+        margin-bottom: 2.5%;
+      }
+
+      .ConsistencySection .parentContainer .card {
+        display: grid;
+        grid-row: span 3;
+        grid-template-rows: subgrid;
+        align-content: start;
+        min-width: 0;
+      }
+
+      .ConsistencySection .parentContainer .card .cardTitleHeading {
+        margin-bottom: 4.3%;
+        font-size: var(--fs-m);
+        font-weight: 400;
+        letter-spacing: var(--ls);
+      }
+
+      .ConsistencySection .parentContainer .card .cardVisualWrapper {
+        width: 100%;
+        aspect-ratio: 1.2 / 1;
+        border-radius: var(--radius-s);
+      }
+
+      .ConsistencySection .parentContainer .card .cardDescriptionText {
+        margin-top: 3.5%;
+        font-size: var(--fs-s);
+        font-weight: 400;
+        line-height: 1.5;
+      }
+
+      .ConsistencySection
+        .parentContainer
+        .card:nth-child(1)
+        .cardVisualWrapper {
+        background-image: url("https://www.ivergut.com/cdn/shop/files/Access_to_our_nutritionists.png?v=1789755542&width=1000");
+      }
+      .ConsistencySection
+        .parentContainer
+        .card:nth-child(2)
+        .cardVisualWrapper {
+        background-image: url("https://www.ivergut.com/cdn/shop/files/Monthly_savings.png?v=1789755542&width=1000");
+      }
+      .ConsistencySection
+        .parentContainer
+        .card:nth-child(3)
+        .cardVisualWrapper {
+        background-image: url("https://www.ivergut.com/cdn/shop/files/Priority_Support.png?v=1789755598&width=1000");
+      }
+      .ConsistencySection
+        .parentContainer
+        .card:nth-child(4)
+        .cardVisualWrapper {
+        background-image: url("https://www.ivergut.com/cdn/shop/files/Better_results.png?v=1789755598&width=1000");
+      }
+
+      .FooterSection {
+        padding-top: var(--pad-y);
+        background: var(--darkBlue);
+      }
+
+      .FooterSection footer .footerGrid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        align-items: start;
+        gap: 1.7%;
+        padding: 0 4.5%;
+      }
+
+      .FooterSection footer .footerGrid .footerBrand svg {
+        width: 100%;
+        height: auto;
+      }
+
+      .FooterSection footer .footerGrid .footerBrand svg * {
+        fill: var(--black);
+      }
+
+      .FooterSection footer .footerGrid .footerCol {
+        gap: var(--gap);
+      }
+
+      .FooterSection footer .footerGrid .footerCol .footerColumnTitle {
+        font-size: var(--fs-m);
+        font-weight: 600;
+        letter-spacing: var(--ls);
+      }
+
+      .FooterSection footer .footerGrid .footerCol .footerLinksList {
+        gap: var(--gap-s);
+      }
+
+      .FooterSection
+        footer
+        .footerGrid
+        .footerCol
+        .footerLinksList
+        li
+        .footerLinkItem {
+        color: var(--muted);
+        font-size: var(--fs-m);
+        font-weight: 600;
+        line-height: 1.5;
+        letter-spacing: 0.06em;
+        transition: color 0.2s ease;
+      }
+
+      .FooterSection
+        footer
+        .footerGrid
+        .footerCol
+        .footerLinksList
+        li
+        .footerLinkItem:hover {
+        color: var(--ink);
+      }
+
+      .FooterSection footer .footerSocial {
+        display: flex;
+        justify-content: center;
+        gap: 0.8%;
+        margin-top: 2.6%;
+        padding-bottom: 4%;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .FooterSection footer .footerSocial a {
+        width: 3.4vw;
+        height: 3.4vw;
+        min-width: 40px;
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        font-size: var(--fs-l);
+      }
+
+      .FooterSection footer .footerSocial a:hover {
+        background: rgba(27, 42, 47, 0.06);
+      }
+
+      .view-section {
+        width: 100%;
+      }
+
+      .subscriptionViewSection {
+        padding: 3vw 2%;
+        width: 100%;
+        background-color: var(--lightBlue);
+      }
+
+      .loginContainer {
+        margin: 0 auto;
+        max-width: 420px;
+        background: var(--bg);
+        border-radius: 24px;
+        padding: 36px 30px;
+        box-shadow: var(--shadow-card);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .loginBrandTitle {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--ink);
+        margin-bottom: 16px;
+      }
+
+      .loginBadge {
+        display: inline-block;
+        background-color: var(--darkBlue);
+        color: var(--ink);
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        padding: 6px 14px;
+        border-radius: var(--pill);
+        margin-bottom: 18px;
+        text-transform: uppercase;
+      }
+
+      .loginMainHeading {
+        font-size: 1.7rem;
+        font-weight: 600;
+        color: var(--ink);
+        margin-bottom: 10px;
+        line-height: 1.2;
+      }
+
+      .loginSubText {
+        font-size: 0.88rem;
+        font-weight: 300;
+        color: var(--teal);
+        line-height: 1.5;
+        margin-bottom: 24px;
+      }
+
+      .loginFormWrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+      }
+
+      .loginInputGroup {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 18px;
+      }
+
+      .loginInputLabel {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--ink);
+        margin-bottom: 6px;
+      }
+
+      .loginTextInput {
+        width: 100%;
+        height: 46px;
+        padding: 0 16px;
+        font-family: inherit;
+        font-size: 0.92rem;
+        color: var(--ink);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--bg);
+        outline: none;
+      }
+
+      .loginTextInput:focus {
+        border-color: var(--ink);
+      }
+
+      .loginSubmitBtn {
+        width: 100%;
+        height: 48px;
+        background: var(--ink);
+        color: var(--bg);
+        border: none;
+        border-radius: var(--pill);
+        font-family: inherit;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        margin-bottom: 16px;
+      }
+
+      .loginFooterNotice {
+        font-size: 0.78rem;
+        font-weight: 300;
+        color: var(--teal);
+        line-height: 1.5;
+        margin-bottom: 24px;
+      }
+
+      .loginDivider {
+        width: 100%;
+        height: 1px;
+        background-color: var(--line);
+        margin-bottom: 24px;
+      }
+
+      .loginHelpSection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 16px;
+      }
+
+      .loginHelpTitle {
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      .loginHelpLink {
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink);
+        text-decoration: underline;
+      }
+
+      .backToHomeBtn {
+        background: transparent;
+        color: var(--teal);
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 8px;
+        border: none;
+        font-family: inherit;
+      }
+
+      .loginMessage {
+        margin-bottom: 14px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        line-height: 1.4;
+      }
+
+      .loginMessage:empty {
+        display: none;
+      }
+
+      .loginMessage.isError {
+        color: var(--danger);
+      }
+
+      .loginMessage.isSuccess {
+        color: var(--accent);
+      }
+
+      .pageOverlay {
+        position: fixed;
+        inset: 0;
+        z-index: var(--z-overlay);
+        background: var(--overlay);
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity var(--ease),
+          visibility var(--ease);
+      }
+
+      .pageOverlay.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .cartDrawer,
+      .mobileMenu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: var(--z-drawer);
+        height: 100%;
+        flex-direction: column;
+        padding: 24px;
+        background: var(--bg);
+        box-shadow: var(--shadow-drawer);
+        transform: translateX(100%);
+        visibility: hidden;
+        transition:
+          transform var(--ease),
+          visibility var(--ease);
+      }
+
+      .cartDrawer {
+        display: flex;
+        width: min(var(--drawer-w), 100%);
+      }
+
+      .mobileMenu {
+        display: none;
+        width: min(var(--menu-w), 85%);
+      }
+
+      .cartDrawer.open,
+      .mobileMenu.open {
+        transform: translateX(0);
+        visibility: visible;
+      }
+
+      .cartDrawer .cartHeader,
+      .mobileMenu .mobileMenuHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .cartDrawer .cartHeader .cartTitle,
+      .mobileMenu .mobileMenuHeader .mobileMenuTitle {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      .cartDrawer .cartHeader .closeCartBtn,
+      .mobileMenu .mobileMenuHeader .closeMenuBtn {
+        font-size: 1.2rem;
+        color: var(--ink);
+      }
+
+      .cartDrawer .cartBody {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+      }
+
+      .cartDrawer .cartBody .cartEmpty,
+      .cartDrawer .cartBody .cartFilled {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+      }
+
+      .cartDrawer .cartBody .cartEmpty {
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        text-align: center;
+      }
+
+      .cartDrawer .cartBody .cartFilled {
+        gap: 16px;
+        padding-top: 16px;
+      }
+
+      .cartDrawer .cartBody .cartEmpty .cartEmptyText {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      .cartDrawer .cartBody .cartContinueBtn {
+        width: 100%;
+        height: 48px;
+        border-radius: var(--pill);
+        background: var(--ink);
+        color: var(--bg);
+        font-weight: 600;
+      }
+
+      .cartDrawer .cartBody .cartEmpty .cartLoginPrompt {
+        margin-top: 8px;
+        font-size: 0.85rem;
+        color: var(--teal);
+      }
+
+      .cartDrawer .cartBody .cartEmpty .cartLoginPrompt a {
+        color: var(--ink);
+        font-weight: 600;
+        text-decoration: underline;
+      }
+
+      .cartDrawer .cartBody .cartFilled .cartItemsList {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        overflow-y: auto;
+      }
+
+      .cartDrawer .cartBody .cartFilled .cartItemsList .cartItem {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 14px;
+        border-radius: 12px;
+        background: var(--surface);
+      }
+
+      .cartDrawer
+        .cartBody
+        .cartFilled
+        .cartItemsList
+        .cartItem
+        .cartItemTitle {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      .cartDrawer
+        .cartBody
+        .cartFilled
+        .cartItemsList
+        .cartItem
+        .cartItemPrice {
+        font-size: 0.8rem;
+        color: var(--teal);
+      }
+
+      .cartDrawer .cartBody .cartFilled .cartItemsList .cartItem .removeBtn {
+        font-size: 1rem;
+        color: var(--danger);
+      }
+
+      .cartDrawer .cartBody .cartFilled .cartSummary {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 12px;
+        border-top: 1px solid var(--line);
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      .mobileMenu .mobileMenuList {
+        margin-top: 8px;
+      }
+
+      .mobileMenu .mobileMenuList li {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .mobileMenu .mobileMenuList li .mobileMenuLink {
+        display: block;
+        padding: 16px 4px;
+        font-size: 1.05rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        color: var(--ink);
+      }
+
+      .productImg {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        background-color: var(--imgBg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .shopLayout {
+        gap: 3vw;
+        padding: 3vw 2.5vw;
+      }
+
+      .shopSidebar {
+        flex: 0 0 16vw;
+        display: flex;
+        flex-direction: column;
+        gap: 1vw;
+        padding-top: 1vw;
+      }
+
+      .shopFilterTitle {
+        font-size: var(--fs-m);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      .shopFilterBtn {
+        text-align: left;
+        padding: 0.4vw 1vw;
+        border-radius: var(--pill);
+        font-size: 16px;
+        letter-spacing: var(--ls);
+        color: var(--ink);
+      }
+
+      #shopView .shopGrid .productTitleHeading {
+        font-weight: 800;
+        font-size: 16px;
+        letter-spacing: 0.02px;
+      }
+
+      .shopMain {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .shopHeading {
+        font-size: var(--fs-h);
+        font-weight: 800;
+        color: var(--ink);
+      }
+
+      .shopGrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--gap-l) var(--gap);
+        margin-top: 0;
+        overflow: visible;
+      }
+
+      .shopGrid .productImg {
+        border-radius: var(--radius);
+      }
+
+      .productImg,
+      .productTitleHeading {
+        cursor: pointer;
+      }
+
+      .productViewSection {
+        padding: 0 4% 3vh;
+      }
+
+      .productBackBtn {
+        margin-bottom: 14px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        color: var(--teal);
+      }
+
+      .productLayout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+        gap: 4vw;
+        padding: 20px 0;
+        box-sizing: border-box;
+      }
+
+      .productGallery {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        min-height: 0;
+        min-width: 0;
+      }
+
+      .galleryMain {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        background-color: var(--imgBg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .galleryThumbs {
+        display: flex;
+        gap: 14px;
+      }
+
+      .galleryThumb {
+        width: 80px;
+        height: 80px;
+        border: 2px solid transparent;
+        background-color: var(--imgBg);
+        background-size: cover;
+        background-position: center;
+      }
+
+      .galleryThumb.active {
+        border-color: var(--black);
+      }
+
+      .productPanel {
+        min-height: 0;
+        min-width: 0;
+        overflow-y: auto;
+        padding-right: 12px;
+        scrollbar-width: thin;
+        scrollbar-color: var(--border) transparent;
+        color: var(--ink);
+        transform: scale(0.7);
+        transform-origin: top left;
+        width: 142.85%;
+        height: 0;
+        min-height: min(142.85%, calc((100vh - 40px) / 0.7));
+        align-self: stretch;
+      }
+
+      .pTitle {
+        font-size: clamp(1.6rem, 2.6vw, 2.6rem);
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: 0.02em;
+        color: var(--ink);
+      }
+
+      .pTag {
+        margin: 26px 0 18px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      .pLove {
+        margin-bottom: 18px;
+        font-size: 1.05rem;
+        letter-spacing: 0.05em;
+        color: var(--ink);
+      }
+
+      .pLove i {
+        margin-right: 6px;
+        color: #e5566d;
+      }
+
+      .pDelivery {
+        margin-bottom: 20px;
+        padding: 14px 16px;
+        border-radius: 12px;
+        background: var(--lightBlue);
+        text-align: center;
+        font-size: 0.95rem;
+        letter-spacing: 0.04em;
+        color: var(--ink);
+      }
+
+      .pDelivery i {
+        margin-right: 8px;
+        color: var(--accent);
+      }
+
+      .pDelivery strong {
+        font-weight: 600;
+        color: var(--accent);
+      }
+
+      .bundleList {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        overflow: hidden;
+      }
+
+      .bundleOption {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 16px 20px;
+        text-align: left;
+        font-size: 1.1rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        color: var(--ink);
+        background: var(--bg);
+      }
+
+      .bundleOption + .bundleOption {
+        border-top: 1px solid var(--line);
+      }
+
+      .bundleOption.selected {
+        background: #07505a;
+        color: var(--bg);
+      }
+
+      .bundleLeft,
+      .bundleRight {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .radioDot {
+        position: relative;
+        flex: 0 0 auto;
+        width: 24px;
+        height: 24px;
+        border: 2px solid var(--accent);
+        border-radius: 50%;
+        background: var(--bg);
+      }
+
+      .selected .radioDot::after,
+      .purchaseOption.active .radioDot::after {
+        content: "";
+        position: absolute;
+        inset: 4px;
+        border-radius: 50%;
+        background: #07505a;
+      }
+
+      .bundleEach {
+        font-weight: 300;
+        font-size: 0.95rem;
+      }
+
+      .shipPill {
+        padding: 6px 14px;
+        border-radius: var(--pill);
+        background: var(--accent);
+        color: var(--bg);
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      .bundleOption.selected .shipPill {
+        background: var(--bg);
+        color: #07505a;
+      }
+
+      .purchaseToggle {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-top: 18px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .purchaseOption {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 18px 20px;
+        font-size: 1.05rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        color: var(--ink);
+        text-align: left;
+      }
+
+      .purchaseOption.active {
+        background: #07505a;
+        color: var(--bg);
+      }
+
+      .pPerks {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin: 20px 0;
+        text-align: center;
+      }
+
+      .pPerks li {
+        font-size: 0.9rem;
+        letter-spacing: 0.04em;
+        line-height: 1.4;
+        color: var(--ink);
+      }
+
+      .pPerks i {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--accent);
+      }
+
+      .pBuyRow {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .shipEvery {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+      }
+
+      .shipEvery select {
+        height: 56px;
+        padding: 0 16px;
+        border: 1px solid var(--line);
+        border-radius: var(--pill);
+        background: var(--lightBlue);
+        font-family: inherit;
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--ink);
+      }
+
+      .pAddBtn {
+        flex: 1;
+        height: 56px;
+        border-radius: var(--pill);
+        background: var(--ink);
+        color: var(--bg);
+        font-size: 1.15rem;
+        font-weight: 600;
+      }
+
+      .nutriNote {
+        position: relative;
+        margin-top: 34px;
+        padding: 26px 28px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: var(--lightBlue);
+      }
+
+      .nutriBadge {
+        position: absolute;
+        top: -18px;
+        right: 22px;
+        padding: 8px 16px;
+        border: 1px solid var(--line);
+        border-radius: var(--pill);
+        background: var(--bg);
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--accent);
+      }
+
+      .nutriNote h3 {
+        margin-bottom: 14px;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--ink);
+      }
+
+      .nutriText {
+        font-size: 1rem;
+        line-height: 1.75;
+        letter-spacing: 0.05em;
+        color: var(--ink);
+      }
+
+      .nutriText strong {
+        font-weight: 700;
+      }
+
+      .nutriAuthor {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-top: 20px;
+      }
+
+      .nutriPhoto {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background-size: cover;
+        background-position: center top;
+      }
+
+      .nutriName {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      .nutriRole {
+        font-size: 0.9rem;
+        color: var(--teal);
+      }
+
+      .nutriSign {
+        margin-left: auto;
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-size: 2rem;
+        color: var(--teal);
+      }
+
+      .pAccordions {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 30px 0 20px;
+      }
+
+      .pAccordion {
+        border-radius: 14px;
+        background: var(--bg);
+        box-shadow: 0 2px 8px rgba(0, 69, 86, 0.15);
+      }
+
+      .pAccordion summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 26px 22px;
+        list-style: none;
+        font-size: 1.3rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+      }
+
+      .pAccordion summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .pAccordion summary::after {
+        content: "+";
+        font-size: 1.8rem;
+        font-weight: 300;
+        color: var(--accent);
+      }
+
+      .pAccordion[open] summary::after {
+        content: "\2212";
+      }
+
+      .pAccordionBody {
+        padding: 0 22px 24px;
+        font-size: 0.98rem;
+        line-height: 1.75;
+        letter-spacing: 0.04em;
+        color: var(--teal);
+      }
+
+      .pAccordionBody ul {
+        padding-left: 20px;
+        list-style: disc;
+      }
+
+      .productStickyBar {
+        position: fixed;
+        right: 2vw;
+        bottom: 16px;
+        z-index: 900;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        max-width: 460px;
+        padding: 10px 12px;
+        border-radius: 20px;
+        background: var(--bg);
+        box-shadow: 0 6px 30px rgba(0, 0, 0, 0.18);
+        transform: translateY(160%);
+        visibility: hidden;
+        transition:
+          transform var(--ease),
+          visibility var(--ease);
+      }
+
+      .productStickyBar.show {
+        transform: translateY(0);
+        visibility: visible;
+      }
+
+      .stickyThumb {
+        flex: 0 0 auto;
+        width: 56px;
+        height: 56px;
+        border-radius: 12px;
+        background-color: var(--imgBg);
+        background-size: cover;
+        background-position: center;
+      }
+
+      .stickyTitle {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      .stickyBtn {
+        flex: 0 0 auto;
+        height: 48px;
+        padding: 0 26px;
+        border-radius: var(--pill);
+        background: #3a3f42;
+        color: var(--bg);
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      @media (max-width: 1024px) {
+        .pPerks {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .pBuyRow {
+          flex-wrap: wrap;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .productViewSection {
+          padding: 16px 5% 28px;
+        }
+        .productLayout {
+          display: block;
+          height: auto;
+          min-height: 0;
+        }
+        .productGallery {
+          margin-bottom: 24px;
+        }
+        .galleryMain {
+          width: 100%;
+          height: auto;
+        }
+        .productPanel {
+          overflow: visible;
+          padding-right: 0;
+          transform: none;
+          width: 100%;
+          height: auto;
+          min-height: 0;
+        }
+        .bundleOption,
+        .purchaseOption {
+          padding: 14px;
+          font-size: 0.95rem;
+        }
+        .bundleLeft,
+        .bundleRight {
+          gap: 8px;
+        }
+        .purchaseToggle {
+          grid-template-columns: 1fr;
+        }
+        .nutriNote {
+          padding: 24px 18px;
+        }
+        .productStickyBar {
+          left: 12px;
+          right: 12px;
+          max-width: none;
+        }
+      }
+
+      #bestSellerTrack {
+        scroll-snap-type: x mandatory;
+      }
+
+      #bestSellerTrack .product {
+        flex: 0 0 calc((100% - 2.5vw) / 3);
+        scroll-snap-align: start;
+      }
+
+      @media (max-width: 768px) {
+        #bestSellerTrack .product {
+          flex: 0 0 100%;
+        }
+      }
+
+      .redefineSection {
+        width: 100%;
+        padding: 5vw 4% 6vw;
+        background: #e8f6f7;
+        overflow: hidden;
+      }
+
+      .redefineInner {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4vw;
+        align-items: center;
+      }
+
+      .redefineLeft {
+        display: flex;
+        flex-direction: column;
+        gap: 2.2vw;
+        max-width: 540px;
+      }
+
+      .redefineHeading {
+        font-size: clamp(2rem, 3.6vw, 3.4rem);
+        font-weight: 600;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        color: var(--ink);
+      }
+
+      .redefineBlock {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9vw;
+      }
+
+      .redefineIcon {
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        font-size: 1.35rem;
+        color: var(--teal);
+      }
+
+      .redefineBlock p {
+        max-width: 480px;
+        font-size: clamp(0.95rem, 1.15vw, 1.1rem);
+        font-weight: 300;
+        line-height: 1.65;
+        letter-spacing: 0.01em;
+        color: var(--teal);
+      }
+
+      .redefineBtn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        height: 52px;
+        margin-top: 0.6vw;
+        padding: 0 32px;
+        border-radius: var(--pill);
+        background: var(--ink);
+        color: var(--bg);
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        transition:
+          transform 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .redefineBtn:hover {
+        background: #0a1a1e;
+        transform: translateY(-1px);
+      }
+
+      .redefineRight {
+        justify-self: center;
+        display: block;
+        width: 100%;
+        max-width: 560px;
+        height: auto;
+        mix-blend-mode: multiply;
+      }
+
+      @media (max-width: 900px) {
+        .redefineInner {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .redefineLeft {
+          max-width: 100%;
+          gap: 28px;
+        }
+
+        .redefineHeading {
+          font-size: 2rem;
+        }
+
+        .redefineBlock p {
+          max-width: 100%;
+          font-size: 0.98rem;
+        }
+
+        .redefineRight {
+          max-width: 340px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .redefineSection {
+          padding: 48px 5% 56px;
+        }
+
+        .redefineHeading {
+          font-size: 1.75rem;
+        }
+
+        .redefineRight {
+          max-width: 260px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="topAnnouncementSection">
+      <div class="topAnnouncement">
+        <div class="topItems">
+          <i class="fas fa-check"></i><span>Trusted by Millions</span>
+        </div>
+        <div class="topItems">
+          <i class="fas fa-check"></i><span>Clean Ingredients</span>
+        </div>
+        <div class="topItems">
+          <i class="fas fa-flask"></i><span>Science-Backed</span>
+        </div>
+        <div class="topItems">
+          <i class="fas fa-box"></i><span>90 Day Guarantee</span>
+        </div>
+        <div class="topItems">
+          <i class="fas fa-thumbs-up"></i><span>Nutritionist Approved</span>
+        </div>
+        <div class="topItems">
+          <i class="fas fa-shield-alt"></i><span>Quality Shield</span>
+        </div>
+      </div>
+    </section>
+    <div class="navSection">
+      <section class="navbarSection">
+        <div class="nav">
+          <div class="navLeft">
+            <ul>
+              <li>
+                <a href="#shop" data-scroll=".bestSellersSection">Shop</a>
+              </li>
+              <li>
+                <a href="#about" data-scroll=".inBetterWeTrustSection"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a href="#reviews" data-scroll=".lovedSection">Reviews</a>
+              </li>
+              <li>
+                <a href="#contactUs" data-scroll=".FooterSection">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+          <div class="navLogo">
+            <a href="#top" data-view="home"
+              ><img
+                src="https://www.ivergut.com/cdn/shop/files/2_7d0d6973-84b6-4fbd-8bef-fb506b810f06.png?v=1789740535&width=270"
+                alt="Iver Labs"
+            /></a>
+          </div>
+          <div class="navRight">
+            <button
+              class="actionIconBtn searchBtn"
+              type="button"
+              aria-label="Search"
+            >
+              <i class="fas fa-search"></i>
+            </button>
+            <a
+              href="#subscription"
+              class="subscriptionsNavLink"
+              data-view="subscription"
+              >My Subscriptions</a
+            >
+            <button
+              class="actionIconBtn cartToggle"
+              id="cartBtn"
+              type="button"
+              aria-label="Cart"
+              aria-controls="cartDrawer"
+              aria-expanded="false"
+            >
+              <i class="fas fa-shopping-cart"></i>
+              <span class="cartCount" id="cartCount" hidden>0</span>
+            </button>
+            <button
+              class="actionIconBtn menuToggle"
+              id="menuBtn"
+              type="button"
+              aria-label="Open menu"
+              aria-controls="mobileMenu"
+              aria-expanded="false"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+    <main id="mainContainer">
+      <div id="homeView" class="view-section">
+        <section class="coverPictureSection">
+          <div class="cover">
+            <div class="rating">
+              <span class="stars"
+                ><b>★</b><b>★</b><b>★</b><b>★</b><b>★</b></span
+              >
+              <span class="ratingText">+1 Million Happy Customers</span>
+            </div>
+            <h2>Choose a Better You</h2>
+            <p>
+              Feel better with nutritionist-approved formulas, clean ingredients
+              and supplements that actually make sense.
+            </p>
+            <button type="button" data-view="shop">Shop Now</button>
+            <div class="perks">
+              <div class="perkItemWrapper">
+                <i class="fas fa-box perkIcon"></i>
+                <span class="perkText">60 Day Money Back Guarantee</span>
+              </div>
+              <div class="perkItemWrapper">
+                <i class="fas fa-truck perkIcon"></i>
+                <span class="perkText">Free Delivery</span>
+              </div>
+            </div>
+            <div class="badge">1 Bottle Sold<br />Every Minute</div>
+          </div>
+        </section>
+
+        <section class="animatedLogosSection">
+          <div class="logoLineContainer">
+            <div class="logoLine independentLogo">
+              <img
+                class="animatedImg"
+                alt="Independent"
+                src="https://www.ivergut.com/cdn/shop/files/logo-independent.svg?v=1789741266&width=300"
+              />
+            </div>
+            <div class="logoLine vogueLogo">
+              <img
+                class="animatedImg"
+                alt="Vogue"
+                src="https://www.ivergut.com/cdn/shop/files/logo-vogue.svg?v=1789741266&width=300"
+              />
+            </div>
+            <div class="logoLine womensHealthLogo">
+              <img
+                class="animatedImg"
+                alt="Women's Health"
+                src="https://www.ivergut.com/cdn/shop/files/logo-wh.svg?v=1789741266&width=300"
+              />
+            </div>
+            <div class="logoLine getTheGlossLogo">
+              <img
+                class="animatedImg"
+                alt="Get The Gloss"
+                src="https://www.ivergut.com/cdn/shop/files/logo-gg.svg?v=1789741266&width=300"
+              />
+            </div>
+            <div class="logoLine guardianLogo">
+              <img
+                class="animatedImg"
+                alt="The Guardian"
+                src="https://www.ivergut.com/cdn/shop/files/logo-guardian.svg?v=1789741265&width=300"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section class="bestSellersSection" id="shopAll">
+          <div class="bestSeller">
+            <div class="bestSellerLeft">
+              <h2><em>Best</em> Sellers</h2>
+              <span
+                >The products powering our community with a bottle sold every
+                minute.</span
+              >
+              <button class="shop" type="button" data-view="shop">
+                &rarr; Shop All
+              </button>
+            </div>
+            <div class="allProduct" id="bestSellerTrack"></div>
+          </div>
+        </section>
+      </div>
+
+      <div id="shopView" class="view-section" hidden>
+        <section class="bestSellersSection shopSection">
+          <div class="bestSeller shopLayout">
+            <aside class="shopSidebar">
+              <h3 class="shopFilterTitle">Product Type</h3>
+              <button class="shopFilterBtn active" type="button">
+                All Products
+              </button>
+            </aside>
+            <div class="shopMain">
+              <h2 class="shopHeading">All Products</h2>
+              <div class="allProduct shopGrid" id="shopGrid"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div id="productView" class="view-section productViewSection" hidden>
+        <button class="productBackBtn" type="button" data-view="shop">
+          &larr; Back to Shop
+        </button>
+        <div class="productLayout" id="productLayout">
+          <div class="productGallery">
+            <div class="galleryMain" id="galleryMain"></div>
+            <div class="galleryThumbs" id="galleryThumbs"></div>
+          </div>
+          <div class="productPanel" id="productPanel">
+            <h1 class="pTitle" id="pTitle"></h1>
+            <p class="pTag" id="pTag"></p>
+            <p class="pLove">
+              <i class="fas fa-heart"></i><span id="pLove"></span>
+            </p>
+            <div class="pDelivery">
+              <i class="far fa-clock"></i>Estimated Delivery:
+              <strong id="pDelivery"></strong>
+            </div>
+            <div class="bundleList" id="bundleList"></div>
+            <div class="purchaseToggle" id="purchaseToggle">
+              <button
+                class="purchaseOption active"
+                type="button"
+                data-type="subscribe"
+              >
+                <span class="radioDot"></span>Subscribe &amp; Save
+              </button>
+              <button class="purchaseOption" type="button" data-type="once">
+                <span class="radioDot"></span>One-Time Purchase
+              </button>
+            </div>
+            <ul class="pPerks">
+              <li><i class="fas fa-check"></i>Easy Pause or Cancel</li>
+              <li><i class="fas fa-check"></i>Best Price Guarantee</li>
+              <li><i class="fas fa-check"></i>90 Day Returns</li>
+              <li><i class="fas fa-check"></i>Priority Support</li>
+            </ul>
+            <div class="pBuyRow">
+              <label class="shipEvery" id="shipWrap">
+                Ship Every
+                <select id="shipSelect">
+                  <option>Deliver every month</option>
+                  <option>Deliver every 2 months</option>
+                  <option>Deliver every 3 months</option>
+                </select>
+              </label>
+              <button
+                class="pAddBtn productAddAction"
+                id="pAddBtn"
+                type="button"
+              >
+                Add to cart
+              </button>
+            </div>
+
+            <div class="nutriNote">
+              <span class="nutriBadge"
+                ><i class="far fa-thumbs-up"></i> Nutritionist Approved</span
+              >
+              <h3>A Note From Our Nutritionist</h3>
+              <p class="nutriText" id="nutriText"></p>
+              <div class="nutriAuthor">
+                <div class="nutriPhoto" id="nutriPhoto"></div>
+                <div>
+                  <div class="nutriName" id="nutriName"></div>
+                  <div class="nutriRole" id="nutriRole"></div>
+                </div>
+                <span class="nutriSign" id="nutriSign"></span>
+              </div>
+            </div>
+            <div class="pAccordions" id="pAccordions"></div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="subscriptionView"
+        class="view-section subscriptionViewSection"
+        hidden
+      >
+        <div class="loginContainer">
+          <h1 class="loginBrandTitle">Iver Labs</h1>
+          <div class="loginBadge">Secure Customer Login</div>
+          <h2 class="loginMainHeading">Access Your Subscriptions</h2>
+          <p class="loginSubText">
+            Enter the email address on your account to view and manage your
+            active subscriptions.
+          </p>
+          <form class="loginFormWrapper" id="loginForm" novalidate>
+            <div class="loginInputGroup">
+              <label class="loginInputLabel" for="userEmail"
+                >Email address</label
+              >
+              <input
+                class="loginTextInput"
+                type="email"
+                id="userEmail"
+                name="email"
+                autocomplete="email"
+                required
+                placeholder="you@example.com"
+              />
+            </div>
+            <p
+              class="loginMessage"
+              id="loginMessage"
+              role="status"
+              aria-live="polite"
+            ></p>
+            <button class="loginSubmitBtn" type="submit">
+              Continue to Sign In &rarr;
+            </button>
+          </form>
+          <p class="loginFooterNotice">
+            You'll confirm your email on Shopify's secure sign-in page next - no
+            password needed, we'll send you a one-time login link.
+          </p>
+          <div class="loginDivider"></div>
+          <div class="loginHelpSection">
+            <span class="loginHelpTitle">Need Help?</span>
+            <a class="loginHelpLink" href="#support">Contact Support</a>
+          </div>
+          <button class="backToHomeBtn" type="button" data-view="home">
+            &larr; Back to Shop
+          </button>
+        </div>
+      </div>
+
+      <div id="sharedSections">
+        <section class="inBetterWeTrustSection" id="about">
+          <div class="parent">
+            <div class="rightChild">
+              <h2>In Better We Trust</h2>
+              <p>
+                Health is a continuous journey of self-improvement, which is the
+                ethos we follow in everything we do. Our formulas are developed
+                with accredited nutritionists and made with ingredients we trust
+                sourced from pristine regions globally and held to the highest
+                safety and quality standards.
+              </p>
+            </div>
+            <div class="leftChild">
+              <div class="item">
+                <div class="featuresCardContainer">
+                  <div class="featureRowItem">
+                    <span class="featureItemText">GMP Certified</span>
+                    <i class="fas fa-ribbon featureItemIcon"></i>
+                  </div>
+                  <div class="featureRowItem">
+                    <span class="featureItemText">Third Party Tested</span>
+                    <i class="fas fa-flask featureItemIcon"></i>
+                  </div>
+                  <div class="featureRowItem">
+                    <span class="featureItemText">Nutritionist Formulated</span>
+                    <i class="fas fa-leaf featureItemIcon"></i>
+                  </div>
+                  <div class="featureRowItem">
+                    <span class="featureItemText"
+                      >Locally Produced in the US</span
+                    >
+                    <i class="fas fa-globe featureItemIcon"></i>
+                  </div>
+                  <div class="featureRowItem">
+                    <span class="featureItemText"
+                      >90 Day Money Back Guarantee</span
+                    >
+                    <i class="fas fa-shield-alt featureItemIcon"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="nutritionistFormulatedAndApprovedSection">
+          <div class="doctorsHeader">
+            <h2 class="doctorsHeading">Nutritionist Formulated & Approved</h2>
+            <div class="doctorsArrows">
+              <button
+                class="doctorsArrow"
+                id="doctorsPrev"
+                aria-label="Previous"
+              >
+                <i class="fas fa-arrow-left"></i>
+              </button>
+              <button class="doctorsArrow" id="doctorsNext" aria-label="Next">
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+          <div class="doctors" id="doctorsTrack">
+            <div class="doctor doctor1">
+              <div class="docParah">
+                <p>
+                  "I recommend products that are thoughtfully made,
+                  science-backed, and aligned with a balanced wellness routine."
+                </p>
+                <h3 class="docName">Dr. Sarah Mitchell</h3>
+                <h5 class="docRole">MFN, RD, CDE</h5>
+              </div>
+              <div class="docImg docImg1"></div>
+            </div>
+            <div class="doctor doctor2">
+              <div class="docParah">
+                <p>
+                  "Formulated with a focus on clean, effective ingredients to
+                  support daily wellness and long-term health."
+                </p>
+                <h3 class="docName">Dr. Emily Carter</h3>
+                <h5 class="docRole">Clinical Nutritionist</h5>
+              </div>
+              <div class="docImg docImg2"></div>
+            </div>
+            <div class="doctor doctor3">
+              <div class="docParah">
+                <p>
+                  "Quality nutrition starts with trusted ingredients, careful
+                  formulation, and a commitment to overall wellbeing."
+                </p>
+                <h3 class="docName">Dr. Lauren Bennett</h3>
+                <h5 class="docRole">MFN, RD, CDE</h5>
+              </div>
+              <div class="docImg docImg3"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="redefineSection" id="redefine">
+          <div class="redefineInner">
+            <div class="redefineLeft">
+              <h2 class="redefineHeading">
+                Redefining Our Approach<br />To Health
+              </h2>
+
+              <div class="redefineBlock">
+                <div class="redefineIcon">
+                  <i class="fas fa-share-nodes"></i>
+                </div>
+                <p>
+                  We're driven by the genuine desire to educate our community on
+                  the value of proactively investing in your long-term health.
+                  Modern medicine can be a myriad of handouts pushing unhealthy
+                  habits and routines, and we firmly believe in a better, more
+                  sustainable way.
+                </p>
+              </div>
+
+              <div class="redefineBlock">
+                <div class="redefineIcon">
+                  <i class="far fa-heart"></i>
+                </div>
+                <p>
+                  By holding ourselves accountable to a market-leading standard,
+                  we want to equip you with what you need to take control.
+                  Combining scientific minds with nutritional expertise, we
+                  deliver transparent, tried and tested formulations — because
+                  you should only settle for better.
+                </p>
+              </div>
+
+              <button class="redefineBtn" type="button">Learn More</button>
+            </div>
+
+            <img
+              class="redefineRight"
+              src="https://www.ivergut.com/cdn/shop/files/202609142055_5.gif?v=1789759801&width=1000"
+              alt="Iver Labs"
+            />
+          </div>
+        </section>
+
+        <section class="voucherSection">
+          <h2 class="voucherHeading">Vouched For</h2>
+          <div class="voucherCards">
+            <div class="reviewCard">
+              <div class="reviewTop">
+                <span class="reviewStars">★★★★★</span>
+                <a href="#shopAll" class="viewProductLink">View Product</a>
+              </div>
+              <p class="reviewText">
+                “I’ve been taking these for a little while now and I’m really
+                happy with them. I’ve noticed I feel more comfortable and
+                balanced overall, and they’ve been easy to take. So far,
+                definitely happy with my purchase!”
+              </p>
+              <h5 class="reviewName">Sophia B.</h5>
+            </div>
+            <div class="reviewPhoto reviewPhoto1"></div>
+            <div class="reviewCard">
+              <div class="reviewTop">
+                <span class="reviewStars">★★★★★</span>
+                <a href="#shopAll" class="viewProductLink">View Product</a>
+              </div>
+              <p class="reviewText">
+                “I’ve really been enjoying this probiotic. It’s easy to take,
+                convenient, and has been a simple addition to my supplements.
+                Really happy with it so far!”
+              </p>
+              <h5 class="reviewName">Sarah M.</h5>
+            </div>
+            <div class="reviewPhoto reviewPhoto2"></div>
+            <div class="reviewCard">
+              <div class="reviewTop">
+                <span class="reviewStars">★★★★★</span>
+                <a href="#shopAll" class="viewProductLink">View Product</a>
+              </div>
+              <p class="reviewText">
+                “I’ve been using these for a little while and so far, so good.
+                They’re easy to take, the packaging was great, and I like how
+                convenient the capsules are. Overall, I’m really happy with my
+                purchase.”
+              </p>
+              <h5 class="reviewName">Emily V.</h5>
+            </div>
+            <div class="reviewPhoto reviewPhoto3"></div>
+            <div class="reviewCard">
+              <div class="reviewTop">
+                <span class="reviewStars">★★★★★</span>
+                <a href="#shopAll" class="viewProductLink">View Product</a>
+              </div>
+              <p class="reviewText">
+                “I’ve been taking these Omega-3 softgels for a few weeks and I’m
+                really happy with them so far. They’re easy to take, and I
+                especially like the lemon flavor since there’s hardly any fishy
+                taste. Definitely a good addition to my supplements.”
+              </p>
+              <h5 class="reviewName">Emma L.</h5>
+            </div>
+            <div class="reviewPhoto reviewPhoto4"></div>
+            <div class="reviewCard">
+              <div class="reviewTop">
+                <span class="reviewStars">★★★★★</span>
+                <a href="#shopAll" class="viewProductLink">View Product</a>
+              </div>
+              <p class="reviewText">
+                “I’ve been taking this Omega-3 for a few weeks and really like
+                it so far. The softgels are easy to take, and the lemon flavor
+                is a nice touch since there’s no strong fishy taste. Definitely
+                one I’ll keep buying.”
+              </p>
+              <h5 class="reviewName">Thessa D.</h5>
+            </div>
+            <div class="reviewPhoto reviewPhoto5"></div>
+            <div class="reviewCard">
+              <div class="reviewTop">
+                <span class="reviewStars">★★★★★</span>
+                <a href="#shopAll" class="viewProductLink">View Product</a>
+              </div>
+              <p class="reviewText">
+                “I’ve been taking this magnesium for a few weeks and really like
+                it so far. I feel more relaxed, and I’ve noticed my muscles
+                don’t feel as tense after a busy day. It’s also easy to take,
+                which is a plus.”
+              </p>
+              <h5 class="reviewName">Patricia S.</h5>
+            </div>
+            <div class="reviewPhoto reviewPhoto6"></div>
+          </div>
+        </section>
+
+        <section class="QuestionSection" id="faq">
+          <div class="faqWrapper">
+            <div class="faqLeft">
+              <h2 class="faqHeading">Frequently Asked Questions</h2>
+              <p class="faqSubText">
+                You asked, we answered. Still have a question?
+                <a href="#contactUs" class="faqContactLink">Contact Us</a>
+              </p>
+              <div class="faqList">
+                <details class="faqItem">
+                  <summary>
+                    Why should I trust Iver Labs with my health?
+                  </summary>
+                  <p>
+                    Our formulas are developed with accredited nutritionists and
+                    every batch is third party tested for purity and quality.
+                  </p>
+                </details>
+                <details class="faqItem">
+                  <summary>Do you offer a money back guarantee?</summary>
+                  <p>
+                    Yes. If you are not happy with your order, contact us within
+                    the guarantee period and we will make it right.
+                  </p>
+                </details>
+                <details class="faqItem">
+                  <summary>Where are your products made?</summary>
+                  <p>
+                    Our products are made in GMP certified facilities with
+                    strict safety and quality standards.
+                  </p>
+                </details>
+                <details class="faqItem">
+                  <summary>When will my order be shipped?</summary>
+                  <p>
+                    Orders are processed within 1 to 2 business days and shipped
+                    with tracking.
+                  </p>
+                </details>
+                <details class="faqItem">
+                  <summary>What is the status of my order?</summary>
+                  <p>
+                    Use the tracking link in your shipping email, or contact our
+                    support team for help.
+                  </p>
+                </details>
+              </div>
+            </div>
+            <div class="faqImage"></div>
+          </div>
+        </section>
+
+        <section class="lovedSection" id="reviews">
+          <h2 class="lovedHeading">Loved by Our <em>Community</em></h2>
+          <div class="vidDiv">
+            <div class="vid">
+              <video
+                controls
+                playsinline
+                preload="metadata"
+                src="https://www.ivergut.com/cdn/shop/videos/c/vp/f4add677529f4d43885bf16ddfeace69/f4add677529f4d43885bf16ddfeace69.HD-1080p-7.2Mbps-95578566.mp4?v=0#t=0.1"
+              ></video>
+            </div>
+            <div class="vid">
+              <video
+                controls
+                playsinline
+                preload="metadata"
+                src="https://www.ivergut.com/cdn/shop/videos/c/vp/a00eced8203c4d269bc14c5d4ef89ec2/a00eced8203c4d269bc14c5d4ef89ec2.HD-1080p-7.2Mbps-95578568.mp4?v=0#t=0.1"
+              ></video>
+            </div>
+            <div class="vid">
+              <video
+                controls
+                playsinline
+                preload="metadata"
+                src="https://www.ivergut.com/cdn/shop/videos/c/vp/9f2b4a9d1f9f4c9b814a86bc5ee0b4bd/9f2b4a9d1f9f4c9b814a86bc5ee0b4bd.HD-1080p-7.2Mbps-95578570.mp4?v=0#t=0.1"
+              ></video>
+            </div>
+            <div class="vid">
+              <video
+                controls
+                playsinline
+                preload="metadata"
+                src="https://www.ivergut.com/cdn/shop/videos/c/vp/77f21615e0874c8c8f9582eacc9b1323/77f21615e0874c8c8f9582eacc9b1323.HD-1080p-7.2Mbps-95578569.mp4?v=0#t=0.1"
+              ></video>
+            </div>
+            <div class="vid">
+              <video
+                controls
+                playsinline
+                preload="metadata"
+                src="https://www.ivergut.com/cdn/shop/videos/c/vp/627f04386bd5408eb0b9b43d25c231b5/627f04386bd5408eb0b9b43d25c231b5.HD-1080p-4.8Mbps-95578567.mp4?v=0#t=0.1"
+              ></video>
+            </div>
+          </div>
+          <div class="followUs">
+            <span class="followText">Follow us to a Better you</span>
+            <div class="socialIconsContainer">
+              <a href="#instagram" class="socialIconLink"
+                ><i class="fab fa-instagram socialIcon"></i
+              ></a>
+              <a href="#tiktok" class="socialIconLink"
+                ><i class="fab fa-tiktok socialIcon"></i
+              ></a>
+              <a href="#x" class="socialIconLink"
+                ><i class="fa-brands fa-x-twitter socialIcon"></i
+              ></a>
+            </div>
+          </div>
+        </section>
+
+        <section class="ConsistencySection">
+          <h3 class="consistencyHeading"><em>Consistency</em> Pays Off</h3>
+          <h5 class="consistencySub">
+            Benefits of being a loyal monthly subscriber:
+          </h5>
+          <div class="parentContainer">
+            <div class="card">
+              <h3 class="cardTitleHeading">Access To Our Nutritionists</h3>
+              <div class="cardVisualWrapper"></div>
+              <p class="cardDescriptionText">
+                Access nutritionist guidance to help you build a routine that
+                fits your goals.
+              </p>
+            </div>
+            <div class="card">
+              <h3 class="cardTitleHeading">Monthly Savings</h3>
+              <div class="cardVisualWrapper"></div>
+              <p class="cardDescriptionText">
+                Enjoy subscriber savings on your regular monthly orders.
+              </p>
+            </div>
+            <div class="card">
+              <h3 class="cardTitleHeading">Priority Support</h3>
+              <div class="cardVisualWrapper"></div>
+              <p class="cardDescriptionText">
+                Get priority support for questions about your orders and
+                subscription.
+              </p>
+            </div>
+            <div class="card">
+              <h3 class="cardTitleHeading">Better Results</h3>
+              <div class="cardVisualWrapper"></div>
+              <p class="cardDescriptionText">
+                Build consistent habits to support your wellness goals over
+                time.
+              </p>
+            </div>
+          </div>
+          <button type="button" data-view="subscription">
+            Start Your Journey
+          </button>
+        </section>
+      </div>
+    </main>
+
+    <section class="FooterSection" id="contactUs">
+      <footer>
+        <div class="footerGrid">
+          <div class="footerBrand">
+            <svg viewBox="0 0 220 50" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0" y="8" width="13" height="34" rx="1" />
+              <rect x="16" y="8" width="13" height="34" rx="1" />
+              <circle cx="39" cy="38" r="5" />
+              <text
+                x="56"
+                y="34"
+                font-family="system-ui, sans-serif"
+                font-weight="800"
+                font-size="24"
+              >
+                IVER LABS
+              </text>
+            </svg>
+          </div>
+          <div class="footerCol">
+            <h3 class="footerColumnTitle">Customer Support</h3>
+            <ul class="footerLinksList">
+              <li>
+                <a href="#trackOrder" class="footerLinkItem"
+                  >Track Your Order</a
+                >
+              </li>
+              <li>
+                <a href="#contactUs" class="footerLinkItem">Contact Us</a>
+              </li>
+              <li>
+                <a href="#shippingInfo" class="footerLinkItem">Shipping Info</a>
+              </li>
+              <li><a href="#returns" class="footerLinkItem">Returns</a></li>
+              <li><a href="#faq" class="footerLinkItem">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footerCol">
+            <h3 class="footerColumnTitle">Our Products</h3>
+            <ul class="footerLinksList">
+              <li><a href="#shopAll" class="footerLinkItem">Shop All</a></li>
+              <li>
+                <a href="#supplements" class="footerLinkItem">Supplements</a>
+              </li>
+              <li><a href="#gummies" class="footerLinkItem">Gummies</a></li>
+              <li><a href="#kids" class="footerLinkItem">Kids</a></li>
+            </ul>
+          </div>
+          <div class="footerCol">
+            <h3 class="footerColumnTitle">Info</h3>
+            <ul class="footerLinksList">
+              <li>
+                <a href="#certificate" class="footerLinkItem"
+                  >Certificate of Analysis</a
+                >
+              </li>
+              <li>
+                <a href="#terms" class="footerLinkItem">Terms of Service</a>
+              </li>
+              <li>
+                <a href="#privacy" class="footerLinkItem">Privacy Policy</a>
+              </li>
+              <li>
+                <a href="#cancellation" class="footerLinkItem"
+                  >Cancellation Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footerSocial">
+          <a href="#facebook" aria-label="Facebook"
+            ><i class="fab fa-facebook"></i
+          ></a>
+          <a href="#instagram" aria-label="Instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="#tiktok" aria-label="TikTok"
+            ><i class="fab fa-tiktok"></i
+          ></a>
+        </div>
+      </footer>
+    </section>
+
+    <div class="pageOverlay" id="pageOverlay"></div>
+
+    <aside
+      class="mobileMenu"
+      id="mobileMenu"
+      aria-label="Menu"
+      aria-hidden="true"
+    >
+      <div class="mobileMenuHeader">
+        <span class="mobileMenuTitle">Menu</span>
+        <button class="closeMenuBtn" type="button" aria-label="Close menu">
+          <i class="fas fa-xmark"></i>
+        </button>
+      </div>
+      <ul class="mobileMenuList">
+        <li>
+          <a
+            href="#shopAll"
+            class="mobileMenuLink"
+            data-scroll=".bestSellersSection"
+            >Shop</a
+          >
+        </li>
+        <li>
+          <a
+            href="#about"
+            class="mobileMenuLink"
+            data-scroll=".inBetterWeTrustSection"
+            >About Us</a
+          >
+        </li>
+        <li>
+          <a href="#reviews" class="mobileMenuLink" data-scroll=".lovedSection"
+            >Reviews</a
+          >
+        </li>
+        <li>
+          <a
+            href="#contactUs"
+            class="mobileMenuLink"
+            data-scroll=".FooterSection"
+            >Contact Us</a
+          >
+        </li>
+        <li>
+          <a
+            href="#subscription"
+            class="mobileMenuLink"
+            data-view="subscription"
+            >My Subscriptions</a
+          >
+        </li>
+      </ul>
+    </aside>
+
+    <aside
+      class="cartDrawer"
+      id="cartDrawer"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="cartTitle"
+      aria-hidden="true"
+    >
+      <div class="cartHeader">
+        <h3 class="cartTitle" id="cartTitle">Your Cart</h3>
+        <button class="closeCartBtn" type="button" aria-label="Close cart">
+          <i class="fas fa-xmark"></i>
+        </button>
+      </div>
+      <div class="cartBody">
+        <div class="cartEmpty" id="cartEmpty">
+          <h3 class="cartEmptyText">Your cart is empty</h3>
+          <button class="cartContinueBtn" type="button">
+            Continue shopping
+          </button>
+          <div class="cartLoginPrompt">
+            <span>Have an account? </span
+            ><a href="#subscription" data-view="subscription">Log in</a
+            ><span> to check out faster.</span>
+          </div>
+        </div>
+        <div class="cartFilled" id="cartFilled" hidden>
+          <ul class="cartItemsList" id="cartItemsList"></ul>
+          <div class="cartSummary">
+            <span>Subtotal</span>
+            <span id="cartSubtotal">$0.00</span>
+          </div>
+          <button class="cartContinueBtn" type="button">
+            Continue shopping
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <div class="productStickyBar" id="productStickyBar" aria-hidden="true">
+      <div class="stickyThumb" id="stickyThumb"></div>
+      <span class="stickyTitle" id="stickyTitle"></span>
+      <button class="stickyBtn productAddAction" type="button">
+        Add to cart
+      </button>
+    </div>
+
+    <script>
+      const navSection = document.querySelector(".navSection");
+      const navbar = document.querySelector(".navbarSection");
+      const announcementBar = document.querySelector(".topAnnouncementSection");
+      const homeView = document.getElementById("homeView");
+      const shopView = document.getElementById("shopView");
+      const productView = document.getElementById("productView");
+      const productPanel = document.getElementById("productPanel");
+      const productStickyBar = document.getElementById("productStickyBar");
+      const pAddBtn = document.getElementById("pAddBtn");
+      const subscriptionView = document.getElementById("subscriptionView");
+      const sharedSections = document.getElementById("sharedSections");
+      const bestSellerTrack = document.getElementById("bestSellerTrack");
+      const shopGrid = document.getElementById("shopGrid");
+      const pageOverlay = document.getElementById("pageOverlay");
+      const cartDrawer = document.getElementById("cartDrawer");
+      const cartBtn = document.getElementById("cartBtn");
+      const cartCount = document.getElementById("cartCount");
+      const cartTitle = document.getElementById("cartTitle");
+      const cartEmpty = document.getElementById("cartEmpty");
+      const cartFilled = document.getElementById("cartFilled");
+      const cartItemsList = document.getElementById("cartItemsList");
+      const cartSubtotal = document.getElementById("cartSubtotal");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const menuBtn = document.getElementById("menuBtn");
+      const doctorsTrack = document.getElementById("doctorsTrack");
+      const loginForm = document.getElementById("loginForm");
+      const loginEmail = document.getElementById("userEmail");
+      const loginMessage = document.getElementById("loginMessage");
+
+      const desktopQuery = window.matchMedia("(min-width: 769px)");
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const layers = [
+        { panel: cartDrawer, trigger: cartBtn },
+        { panel: mobileMenu, trigger: menuBtn },
+      ];
+
+      const doctors = {
+        sarah: {
+          name: "Dr. Sarah Mitchell",
+          role: "MFN, RD, CDE",
+          image:
+            "https://www.ivergut.com/cdn/shop/files/dbcdc043-82d4-4aef-b160-a004b1ede853.png?v=1789787332&width=800",
+        },
+        emily: {
+          name: "Dr. Emily Carter",
+          role: "Registered Nutritional Therapist (BANT)",
+          image:
+            "https://www.ivergut.com/cdn/shop/files/3975936_6bbb8863-1507-4505-b354-e589df17bde6.webp?v=1779439691&width=800",
+        },
+        lauren: {
+          name: "Dr. Lauren Bennett",
+          role: "MFN, RD, CDE",
+          image:
+            "https://www.ivergut.com/cdn/shop/files/09291d2f-9070-44e0-b384-26d5d51ca894.png?v=1789786869&width=800",
+        },
+      };
+
+      const products = [
+        {
+          title: "Advanced Probiotic with Prebiotic Fiber",
+          description: "Promotes digestive health and gut balance.",
+          price: 38.5,
+          image:
+            "https://www.ivergut.com/cdn/shop/files/Advanced_Probiotic_2.png?v=1791910269&width=1445",
+          bestSeller: true,
+          gallery: [
+            "https://www.ivergut.com/cdn/shop/files/Advanced_Probiotic_2.png?v=1791910269&width=1445",
+            "https://www.ivergut.com/cdn/shop/files/AdvancedProbioticSupplementalFacts.png?v=1789744053&width=1680",
+          ],
+          detail: {
+            tag: "Trending",
+            love: "150K+ Customers Love This",
+            doctor: "emily",
+            note: "A healthy gut is the foundation for good digestion, steady energy, and a stronger immune system. Alongside a balanced diet and regular hydration, I often recommend a daily probiotic to help maintain that balance. **Advanced Probiotic 50 Billion CFU with Prebiotic Fiber** combines ten live bacterial strains with inulin, a prebiotic fiber that feeds the good bacteria already in your gut, so you get support that lasts rather than a one-time dose.",
+            benefits: [
+              "Supports digestive comfort and regularity",
+              "Helps maintain a balanced gut flora",
+              "Supports everyday immune function",
+              "Prebiotic fiber helps good bacteria thrive",
+            ],
+            about:
+              "A daily probiotic with 50 billion CFU and prebiotic fiber, in easy-to-take vegetarian capsules. Take one capsule a day with water, with or without food.",
+            whoFor:
+              "Adults who want everyday digestive support, people with changing routines or diets, and anyone building a consistent gut-health habit.",
+            ingredients:
+              "Probiotic blend (50 billion CFU, 10 strains), inulin (prebiotic fiber), vegetarian capsule. No artificial colours or preservatives.",
+          },
+        },
+        {
+          title: "Intimate Probiotic with Prebiotic Fiber",
+          description: "Supports intimate health and microbiome balance.",
+          price: 38.5,
+          image:
+            "https://www.ivergut.com/cdn/shop/files/IntimateProbiotic.png?v=1789744364&width=823",
+          image2:
+            "https://www.ivergut.com/cdn/shop/files/IntimateProbioticsupplementalfacts.png?v=1789744364&width=990",
+          bestSeller: true,
+          detail: {
+            tag: "Women's Wellness",
+            love: "90K+ Women Trust This",
+            doctor: "sarah",
+            note: "A balanced microbiome plays a big role in how comfortable and confident you feel day to day. I recommend targeted strains that are chosen for women's wellness. **Intimate Probiotic with 50B CFU and Prebiotic Fiber** pairs those strains with a prebiotic so they can settle in and keep your natural balance steady.",
+            benefits: [
+              "Supports healthy pH balance",
+              "Helps maintain a balanced intimate microbiome",
+              "Targeted strains chosen for women's wellness",
+              "Prebiotic fiber supports lasting results",
+            ],
+            about:
+              "A women's probiotic with 50 billion CFU and prebiotic fiber, formulated to support intimate health. One vegetarian capsule daily.",
+            whoFor:
+              "Women who want daily support for intimate comfort and microbiome balance, especially during busy or stressful periods.",
+            ingredients:
+              "Probiotic blend (50 billion CFU, women's wellness strains), prebiotic fiber, vegetarian capsule. Free from artificial colours.",
+          },
+        },
+        {
+          title: "Turmeric Curcumin 95 - 120 Capsules",
+          description: "Reduces inflammation and joint discomfort.",
+          price: 38.5,
+          image:
+            "https://www.ivergut.com/cdn/shop/files/Ivermectin.png?v=1789744466&width=1000",
+          image2:
+            "https://www.ivergut.com/cdn/shop/files/IntimateProbioticsupplementalfacts.png?v=1789744364&width=990",
+          bestSeller: true,
+          detail: {
+            tag: "Joint Support",
+            love: "70K+ Customers Love This",
+            doctor: "lauren",
+            note: "Curcumin is one of the most studied plant compounds for everyday joint comfort. Absorption is the real challenge, so I look for a standardised extract paired with black pepper. **Turmeric Curcumin 95** uses a high-strength extract so you can support your joints and recovery with a simple daily routine.",
+            benefits: [
+              "Supports joint comfort and mobility",
+              "Helps the body manage everyday inflammation",
+              "Antioxidant support",
+              "120 capsules for a long-lasting supply",
+            ],
+            about:
+              "A standardised turmeric extract with 95% curcuminoids and black pepper for absorption. Take two capsules daily with a meal.",
+            whoFor:
+              "Active adults, people with stiff joints after exercise or long days, and anyone looking for plant-based daily support.",
+            ingredients:
+              "Turmeric root extract (95% curcuminoids), black pepper extract, vegetarian capsule.",
+          },
+        },
+        {
+          title: "Magnesium 3-in-1 Complex",
+          description: "Supports muscle relaxation and a calm, balanced day.",
+          price: 38.5,
+          image:
+            "https://www.ivergut.com/cdn/shop/files/Magnesium.png?v=1789744558&width=1000",
+          image2:
+            "https://www.ivergut.com/cdn/shop/files/IntimateProbioticsupplementalfacts.png?v=1789744364&width=990",
+          bestSeller: true,
+          detail: {
+            tag: "Calm & Recovery",
+            love: "110K+ Customers Love This",
+            doctor: "emily",
+            note: "Most people do not get enough magnesium from diet alone, and different forms do different jobs. **Magnesium 3-in-1 Complex** combines three well-absorbed forms, so one routine supports muscles, relaxation, and a calmer wind-down in the evening.",
+            benefits: [
+              "Supports muscle relaxation and recovery",
+              "Helps you feel calm and balanced",
+              "Supports a healthy evening routine",
+              "Three gentle, well-absorbed forms",
+            ],
+            about:
+              "A three-form magnesium complex in easy capsules. Take as directed on the label, ideally in the evening.",
+            whoFor:
+              "Anyone with busy, stressful days, people who train regularly, and those who want an easier evening wind-down.",
+            ingredients:
+              "Magnesium glycinate, magnesium citrate, magnesium malate, vegetarian capsule.",
+          },
+        },
+        {
+          title: "Men's Booster++",
+          description: "Supports men's vitality and everyday performance.",
+          price: 44,
+          image:
+            "https://www.ivergut.com/cdn/shop/files/MenBooster.png?v=1789744676&width=1000",
+          image2:
+            "https://www.ivergut.com/cdn/shop/files/IntimateProbioticsupplementalfacts.png?v=1789744364&width=990",
+          bestSeller: true,
+          detail: {
+            tag: "Men's Health",
+            love: "60K+ Men Love This",
+            doctor: "lauren",
+            note: "Energy, focus, and stamina depend on getting the basics right. I like formulas that bring vitamins, minerals, and botanicals together in sensible amounts. **Men's Booster++** is built for daily vitality, so it fits easily alongside training, work, and a balanced diet.",
+            benefits: [
+              "Supports vitality and everyday energy",
+              "Supports stamina and performance",
+              "Includes key vitamins and minerals for men",
+              "Simple once-a-day routine",
+            ],
+            about:
+              "A daily men's formula that combines vitamins, minerals, and plant extracts. Take as directed on the label.",
+            whoFor:
+              "Adult men who want daily support for energy, stamina, and general wellbeing.",
+            ingredients:
+              "Zinc, vitamin D3, vitamin B6, ashwagandha extract, maca root, vegetarian capsule.",
+          },
+        },
+        {
+          title: "Omega-3 Fish Oil, Natural Lemon Flavour",
+          description: "Supports heart health and brain function.",
+          price: 33,
+          image:
+            "https://www.ivergut.com/cdn/shop/files/Omage-3.png?v=1789744958&width=1000",
+          image2:
+            "https://www.ivergut.com/cdn/shop/files/IntimateProbioticsupplementalfacts.png?v=1789744364&width=990",
+          bestSeller: true,
+          detail: {
+            tag: "Heart & Brain",
+            love: "130K+ Customers Love This",
+            doctor: "sarah",
+            note: "Omega-3s are essential fats that we need from food or supplements. If you do not eat oily fish often, a quality fish oil is an easy way to fill the gap. **Omega-3 Fish Oil with natural lemon flavour** gives you EPA and DHA with very little fishy aftertaste.",
+            benefits: [
+              "Supports heart health",
+              "Supports brain function and focus",
+              "Supports eye health",
+              "Natural lemon flavour, minimal aftertaste",
+            ],
+            about:
+              "A high-strength fish oil softgel with EPA and DHA and a natural lemon flavour. Take two softgels daily with a meal.",
+            whoFor:
+              "Adults who rarely eat oily fish, and anyone who wants daily support for heart, brain, and eye health.",
+            ingredients:
+              "Fish oil concentrate (EPA and DHA), natural lemon flavour, softgel capsule (gelatin, glycerin), mixed tocopherols.",
+          },
+        },
+        {
+          title: "Collagen Complex with Hyaluronic Acid",
+          description: "Boosts immune system and collagen.",
+          price: 38.5,
+          image:
+            "https://www.ivergut.com/cdn/shop/files/Collagen3.png?v=1791901960&width=990",
+          image2:
+            "https://www.ivergut.com/cdn/shop/files/IntimateProbioticsupplementalfacts.png?v=1789744364&width=990",
+          bestSeller: false,
+          detail: {
+            tag: "Beauty From Within",
+            love: "80K+ Customers Love This",
+            doctor: "emily",
+            note: "Collagen levels naturally decline with age, which can show up in skin, hair, nails, and joints. **Collagen Complex with Hyaluronic Acid and Turmeric** supports your body from the inside, with antioxidants to protect what you build.",
+            benefits: [
+              "Supports healthy skin, hair, and nails",
+              "Supports joint health",
+              "Hyaluronic acid supports hydration",
+              "Antioxidant support from turmeric",
+            ],
+            about:
+              "A collagen complex with hyaluronic acid and turmeric in vegetarian-friendly capsules. Take as directed on the label.",
+            whoFor:
+              "Adults who want beauty-from-within support for skin, hair, nails, and joints.",
+            ingredients:
+              "Collagen peptides, hyaluronic acid, turmeric extract, vitamin C, capsule shell.",
+          },
+        },
+      ];
+
+      products.forEach((item) => {
+        item.id = slugify(item.title);
+      });
+
+      let currentView = "home";
+      let lastScrollY = window.scrollY;
+      let lastFocused = null;
+      let cart = [];
+
+      let currentProductId = null;
+      let activeProduct = null;
+      let selectedBundle = 1;
+      let purchaseType = "subscribe";
+
+      function slugify(text) {
+        return text
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-+|-+$/g, "");
+      }
+
+      function findProduct(id) {
+        return products.find((item) => item.id === id);
+      }
+
+      function unitPrice(product, bottles, type) {
+        const one = type === "subscribe" ? product.price * 0.85 : product.price;
+        const factor = bottles === 1 ? 1 : bottles === 2 ? 0.7855 : 0.714;
+        return Math.round(one * factor * 100 + 1e-6) / 100;
+      }
+
+      function deliveryRange() {
+        const format = (date) =>
+          date.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+        const from = new Date();
+        const to = new Date();
+        from.setDate(from.getDate() + 2);
+        to.setDate(to.getDate() + 4);
+        return `${format(from)} \u2013 ${format(to)}`;
+      }
+
+      function appendRichText(element, text) {
+        element.replaceChildren();
+        text.split("**").forEach((part, index) => {
+          if (!part) return;
+          element.append(
+            index % 2
+              ? createElement("strong", "", part)
+              : document.createTextNode(part),
+          );
+        });
+      }
+
+      function setBackground(element, image) {
+        element.style.backgroundImage = image ? `url("${image}")` : "none";
+      }
+
+      function renderBundles() {
+        const options = [1, 2, 3].map((count) => {
+          const button = createElement("button", "bundleOption");
+          const left = createElement("span", "bundleLeft");
+          const right = createElement("span", "bundleRight");
+          const price = unitPrice(activeProduct, count, purchaseType);
+
+          button.type = "button";
+          button.dataset.count = count;
+          button.classList.toggle("selected", count === selectedBundle);
+
+          left.append(
+            createElement("span", "radioDot"),
+            createElement(
+              "span",
+              "",
+              `${count} ${count === 1 ? "Bottle" : "Bottles"}`,
+            ),
+          );
+          right.append(createElement("span", "", formatMoney(price)));
+          if (count > 1)
+            right.append(createElement("span", "bundleEach", "/each"));
+          right.append(createElement("span", "shipPill", "Free Shipping"));
+
+          button.append(left, right);
+          return button;
+        });
+        document.getElementById("bundleList").replaceChildren(...options);
+      }
+
+      function renderPurchaseToggle() {
+        document.querySelectorAll(".purchaseOption").forEach((button) => {
+          button.classList.toggle(
+            "active",
+            button.dataset.type === purchaseType,
+          );
+        });
+        document.getElementById("shipWrap").hidden =
+          purchaseType !== "subscribe";
+      }
+
+      function renderGallery(product) {
+        const images =
+          product.gallery && product.gallery.length
+            ? product.gallery
+            : [product.image, product.image2].filter(Boolean);
+        const main = document.getElementById("galleryMain");
+        const thumbs = images.map((image, index) => {
+          const thumb = createElement("button", "galleryThumb");
+          thumb.type = "button";
+          thumb.classList.toggle("active", index === 0);
+          setBackground(thumb, image);
+          thumb.addEventListener("click", () => {
+            setBackground(main, image);
+            document
+              .querySelectorAll(".galleryThumb")
+              .forEach((item) =>
+                item.classList.toggle("active", item === thumb),
+              );
+          });
+          return thumb;
+        });
+        setBackground(main, images[0]);
+        document.getElementById("galleryThumbs").replaceChildren(...thumbs);
+      }
+
+      function createAccordion(title, content) {
+        const item = createElement("details", "pAccordion");
+        const body = createElement("div", "pAccordionBody");
+
+        if (Array.isArray(content)) {
+          const list = createElement("ul");
+          content.forEach((line) => list.append(createElement("li", "", line)));
+          body.append(list);
+        } else {
+          body.textContent = content;
+        }
+
+        item.append(createElement("summary", "", title), body);
+        return item;
+      }
+
+      function renderProductPage(product) {
+        const detail = product.detail;
+        const doctor = doctors[detail.doctor];
+
+        activeProduct = product;
+        selectedBundle = 1;
+        purchaseType = "subscribe";
+        document.getElementById("shipSelect").selectedIndex = 0;
+
+        document.title = `${product.title} | Iver Labs`;
+        document.getElementById("pTitle").textContent = product.title;
+        document.getElementById("pTag").textContent = detail.tag;
+        document.getElementById("pLove").textContent = detail.love;
+        document.getElementById("pDelivery").textContent = deliveryRange();
+
+        appendRichText(document.getElementById("nutriText"), detail.note);
+        setBackground(document.getElementById("nutriPhoto"), doctor.image);
+        document.getElementById("nutriName").textContent = doctor.name;
+        document.getElementById("nutriRole").textContent = doctor.role;
+        document.getElementById("nutriSign").textContent =
+          doctor.name.replace("Dr. ", "").charAt(0) + ".";
+
+        document
+          .getElementById("pAccordions")
+          .replaceChildren(
+            createAccordion("Benefits", detail.benefits),
+            createAccordion("Description", detail.about),
+            createAccordion("Who's It For?", detail.whoFor),
+            createAccordion("Ingredients", detail.ingredients),
+          );
+
+        setBackground(document.getElementById("stickyThumb"), product.image);
+        document.getElementById("stickyTitle").textContent = product.title;
+
+        renderGallery(product);
+        renderBundles();
+        renderPurchaseToggle();
+        productPanel.scrollTop = 0;
+      }
+
+      function openProduct(id) {
+        history.pushState({ view: "product" }, "", `#product/${id}`);
+        renderView();
+      }
+
+      function addProductToCart() {
+        if (!activeProduct) return;
+        const each = unitPrice(activeProduct, selectedBundle, purchaseType);
+        const total = Math.round(each * selectedBundle * 100) / 100;
+        const bottles = `${selectedBundle} ${selectedBundle === 1 ? "Bottle" : "Bottles"}`;
+        const mode = purchaseType === "subscribe" ? ", Subscription" : "";
+
+        cart.push({
+          title: `${activeProduct.title} (${bottles}${mode})`,
+          priceLabel: formatMoney(total),
+          price: total,
+        });
+        renderCart();
+        openLayer(cartDrawer, cartBtn);
+      }
+
+      function updateStickyBar() {
+        if (currentView !== "product") {
+          productStickyBar.classList.remove("show");
+          return;
+        }
+
+        const rect = pAddBtn.getBoundingClientRect();
+        let top = 0;
+        let bottom = window.innerHeight;
+
+        if (desktopQuery.matches) {
+          const panelRect = productPanel.getBoundingClientRect();
+          top = Math.max(top, panelRect.top);
+          bottom = Math.min(bottom, panelRect.bottom);
+        }
+
+        productStickyBar.classList.toggle("show", rect.bottom <= top);
+      }
+
+      function handleLayoutWheel(event) {
+        if (!desktopQuery.matches) return;
+
+        const down = event.deltaY > 0;
+        const maxScroll = productPanel.scrollHeight - productPanel.clientHeight;
+        const canScroll = down
+          ? productPanel.scrollTop < maxScroll - 1
+          : productPanel.scrollTop > 0 && window.scrollY <= 0;
+
+        if (!canScroll) return;
+        event.preventDefault();
+        productPanel.scrollTop += event.deltaY;
+      }
+
+      function createElement(tag, className, text) {
+        const element = document.createElement(tag);
+        if (className) element.className = className;
+        if (text !== undefined) element.textContent = text;
+        return element;
+      }
+
+      function parsePrice(text) {
+        const match = text.match(/\d[\d,]*(?:\.\d+)?/);
+        return match ? parseFloat(match[0].replace(/,/g, "")) : 0;
+      }
+
+      function formatMoney(value) {
+        return `$${value.toFixed(2)}`;
+      }
+
+      function createProduct({ id, title, description, price, image }) {
+        const card = createElement("div", "product");
+        const img = createElement("div", "productImg");
+        const details = createElement("div", "productDetailsContainer");
+        const actionRow = createElement("div", "productActionRow");
+        const addBtn = createElement("button", "addToCartBtn");
+
+        card.dataset.id = id;
+        if (image) img.style.backgroundImage = `url("${image}")`;
+        addBtn.type = "button";
+        addBtn.append(createElement("span", "", "→ Add to Cart"));
+
+        actionRow.append(
+          addBtn,
+          createElement(
+            "span",
+            "productPriceText",
+            `From ${formatMoney(price)}`,
+          ),
+        );
+        details.append(
+          createElement("h3", "productTitleHeading", title),
+          createElement("p", "productDescriptionText", description),
+          actionRow,
+        );
+        card.append(img, details);
+        return card;
+      }
+
+      function renderProducts(container, list) {
+        container.replaceChildren(...list.map(createProduct));
+      }
+
+      function renderAllProducts() {
+        renderProducts(
+          bestSellerTrack,
+          products.filter((item) => item.bestSeller),
+        );
+        renderProducts(shopGrid, products);
+      }
+
+      function updateNavSpace() {
+        navSection.style.height = `${navbar.offsetHeight}px`;
+      }
+
+      function handleNavScroll() {
+        const currentScrollY = window.scrollY;
+        const announcementHeight = announcementBar.offsetHeight;
+
+        if (
+          currentScrollY < lastScrollY &&
+          currentScrollY > announcementHeight
+        ) {
+          navbar.classList.add("sticky-nav");
+        } else if (
+          currentScrollY > lastScrollY ||
+          currentScrollY <= announcementHeight
+        ) {
+          navbar.classList.remove("sticky-nav");
+        }
+
+        lastScrollY = Math.max(currentScrollY, 0);
+      }
+
+      function getDoctorStep() {
+        const card = doctorsTrack.querySelector(".doctor");
+        const gap = parseFloat(getComputedStyle(doctorsTrack).columnGap) || 0;
+        return card.offsetWidth + gap;
+      }
+
+      function syncLayers() {
+        const anyOpen = layers.some(({ panel }) =>
+          panel.classList.contains("open"),
+        );
+        pageOverlay.classList.toggle("show", anyOpen);
+        document.body.classList.toggle("noScroll", anyOpen);
+      }
+
+      function closeLayers() {
+        const wasOpen = layers.some(({ panel }) =>
+          panel.classList.contains("open"),
+        );
+
+        layers.forEach(({ panel, trigger }) => {
+          panel.classList.remove("open");
+          panel.setAttribute("aria-hidden", "true");
+          trigger.setAttribute("aria-expanded", "false");
+        });
+
+        syncLayers();
+
+        if (wasOpen && lastFocused && document.contains(lastFocused)) {
+          lastFocused.focus({ preventScroll: true });
+        }
+      }
+
+      function openLayer(panel, trigger) {
+        closeLayers();
+        lastFocused = document.activeElement;
+        panel.classList.add("open");
+        panel.setAttribute("aria-hidden", "false");
+        trigger.setAttribute("aria-expanded", "true");
+        syncLayers();
+
+        const focusTarget = panel.querySelector("button, a");
+        if (focusTarget) {
+          requestAnimationFrame(() =>
+            focusTarget.focus({ preventScroll: true }),
+          );
+        }
+      }
+
+      function parseHash() {
+        const hash = location.hash;
+        if (hash === "#subscription") return { view: "subscription", id: null };
+        if (hash === "#shop") return { view: "shop", id: null };
+        if (hash.startsWith("#product/")) {
+          const id = decodeURIComponent(hash.slice(9));
+          if (findProduct(id)) return { view: "product", id };
+        }
+        return { view: "home", id: null };
+      }
+
+      function renderView() {
+        const { view, id } = parseHash();
+        if (view === currentView && id === currentProductId) return;
+
+        currentView = view;
+        currentProductId = id;
+        homeView.hidden = view !== "home";
+        shopView.hidden = view !== "shop";
+        productView.hidden = view !== "product";
+        subscriptionView.hidden = view !== "subscription";
+        sharedSections.hidden = view === "subscription" || view === "product";
+
+        if (view === "product") {
+          renderProductPage(findProduct(id));
+        } else {
+          document.title = "Iver Labs";
+        }
+
+        const targetId = view === "home" ? location.hash.slice(1) : "";
+        const target = targetId ? document.getElementById(targetId) : null;
+
+        if (target) {
+          target.scrollIntoView({ behavior: "instant" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "instant" });
+        }
+
+        updateStickyBar();
+      }
+
+      function navigateTo(view) {
+        if (view === currentView) {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          return;
+        }
+
+        const url =
+          view === "home" ? location.pathname + location.search : `#${view}`;
+        history.pushState({ view }, "", url);
+        renderView();
+      }
+
+      function scrollToSection(selector) {
+        const isFooter = selector === ".FooterSection";
+        const needsHome =
+          (!isFooter &&
+            (currentView === "subscription" || currentView === "product")) ||
+          (selector === ".bestSellersSection" && currentView !== "home");
+
+        if (needsHome) navigateTo("home");
+
+        const target = document.querySelector(selector);
+        if (target) target.scrollIntoView({ behavior: "smooth" });
+      }
+
+      function createCartItem(item, index) {
+        const row = createElement("li", "cartItem");
+        const info = createElement("div", "cartItemInfo");
+        const removeBtn = createElement("button", "removeBtn");
+
+        info.append(
+          createElement("h4", "cartItemTitle", item.title),
+          createElement("span", "cartItemPrice", item.priceLabel),
+        );
+
+        removeBtn.type = "button";
+        removeBtn.dataset.index = index;
+        removeBtn.setAttribute("aria-label", `Remove ${item.title}`);
+        removeBtn.append(createElement("i", "fas fa-trash"));
+
+        row.append(info, removeBtn);
+        return row;
+      }
+
+      function renderCart() {
+        const count = cart.length;
+        const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+        cartTitle.textContent = count ? `Your Cart (${count})` : "Your Cart";
+        cartCount.textContent = count;
+        cartCount.hidden = count === 0;
+        cartBtn.setAttribute(
+          "aria-label",
+          count ? `Cart, ${count} ${count === 1 ? "item" : "items"}` : "Cart",
+        );
+        cartEmpty.hidden = count > 0;
+        cartFilled.hidden = count === 0;
+        cartItemsList.replaceChildren(...cart.map(createCartItem));
+        cartSubtotal.textContent = formatMoney(total);
+      }
+
+      function addToCart(button) {
+        const product = button.closest(".product");
+        const title = product
+          .querySelector(".productTitleHeading")
+          .textContent.replace(/\s+/g, " ")
+          .trim();
+        const priceLabel = product
+          .querySelector(".productPriceText")
+          .textContent.trim();
+
+        cart.push({ title, priceLabel, price: parsePrice(priceLabel) });
+        renderCart();
+        openLayer(cartDrawer, cartBtn);
+      }
+
+      function setLoginMessage(text, type) {
+        loginMessage.textContent = text;
+        loginMessage.className = text ? `loginMessage ${type}` : "loginMessage";
+      }
+
+      function handleLoginSubmit(event) {
+        event.preventDefault();
+        const email = loginEmail.value.trim();
+
+        if (!emailPattern.test(email)) {
+          setLoginMessage("Please enter a valid email address.", "isError");
+          loginEmail.focus();
+          return;
+        }
+
+        setLoginMessage(
+          `We have sent a one-time login link to ${email}.`,
+          "isSuccess",
+        );
+      }
+
+      window.addEventListener("scroll", handleNavScroll, { passive: true });
+      window.addEventListener("popstate", renderView);
+      window.addEventListener("hashchange", renderView);
+
+      if ("ResizeObserver" in window) {
+        new ResizeObserver(updateNavSpace).observe(navbar);
+      } else {
+        window.addEventListener("resize", updateNavSpace);
+      }
+
+      document.getElementById("doctorsNext").addEventListener("click", () => {
+        doctorsTrack.scrollBy({ left: getDoctorStep(), behavior: "smooth" });
+      });
+
+      document.getElementById("doctorsPrev").addEventListener("click", () => {
+        doctorsTrack.scrollBy({ left: -getDoctorStep(), behavior: "smooth" });
+      });
+
+      document.querySelectorAll("[data-scroll]").forEach((element) => {
+        element.addEventListener("click", (event) => {
+          event.preventDefault();
+          closeLayers();
+          scrollToSection(element.dataset.scroll);
+        });
+      });
+
+      document.querySelectorAll("[data-view]").forEach((element) => {
+        element.addEventListener("click", (event) => {
+          event.preventDefault();
+          closeLayers();
+          navigateTo(element.dataset.view);
+        });
+      });
+
+      cartBtn.addEventListener("click", () => openLayer(cartDrawer, cartBtn));
+
+      menuBtn.addEventListener("click", () => {
+        if (mobileMenu.classList.contains("open")) {
+          closeLayers();
+        } else {
+          openLayer(mobileMenu, menuBtn);
+        }
+      });
+
+      pageOverlay.addEventListener("click", closeLayers);
+
+      document
+        .querySelectorAll(".closeCartBtn, .closeMenuBtn")
+        .forEach((button) => {
+          button.addEventListener("click", closeLayers);
+        });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeLayers();
+      });
+
+      desktopQuery.addEventListener("change", (event) => {
+        if (event.matches && mobileMenu.classList.contains("open"))
+          closeLayers();
+      });
+
+      cartDrawer.addEventListener("click", (event) => {
+        if (event.target.closest(".cartContinueBtn")) {
+          closeLayers();
+          return;
+        }
+
+        const removeBtn = event.target.closest(".removeBtn");
+        if (removeBtn) {
+          cart.splice(Number(removeBtn.dataset.index), 1);
+          renderCart();
+        }
+      });
+
+      document.addEventListener("click", (event) => {
+        const button = event.target.closest(".addToCartBtn");
+        if (button) addToCart(button);
+      });
+
+      document.addEventListener("click", (event) => {
+        const trigger = event.target.closest(
+          ".productImg, .productTitleHeading",
+        );
+        const card = trigger && trigger.closest(".product");
+        if (card && card.dataset.id) openProduct(card.dataset.id);
+
+        if (event.target.closest(".productAddAction")) addProductToCart();
+      });
+
+      document
+        .getElementById("bundleList")
+        .addEventListener("click", (event) => {
+          const option = event.target.closest(".bundleOption");
+          if (!option) return;
+          selectedBundle = Number(option.dataset.count);
+          renderBundles();
+        });
+
+      document
+        .getElementById("purchaseToggle")
+        .addEventListener("click", (event) => {
+          const option = event.target.closest(".purchaseOption");
+          if (!option) return;
+          purchaseType = option.dataset.type;
+          renderPurchaseToggle();
+          renderBundles();
+        });
+
+      productPanel.addEventListener("scroll", updateStickyBar, {
+        passive: true,
+      });
+      window.addEventListener("scroll", updateStickyBar, { passive: true });
+      window.addEventListener("resize", updateStickyBar);
+      document
+        .getElementById("productLayout")
+        .addEventListener("wheel", handleLayoutWheel, { passive: false });
+
+      loginForm.addEventListener("submit", handleLoginSubmit);
+      loginEmail.addEventListener("input", () => setLoginMessage("", ""));
+
+      renderAllProducts();
+      renderView();
+      renderCart();
+      updateNavSpace();
+    </script>
+  </body>
+</html>
